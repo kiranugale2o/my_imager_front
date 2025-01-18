@@ -1,4 +1,6 @@
+import Link from "next/link";
 import LeftNavbar from "../headers/leftbar";
+import { ArrowRight } from "lucide-react";
 
 export default function DocsCard() {
   return (
@@ -84,6 +86,11 @@ export default function DocsCard() {
             to use wherever you need them!
           </p>
         </section>
+        <Link href="/docs/installation" className="text-black">
+          <p className="mt-10 text-end p-2 px-5 w-[60px]  border ">
+            <ArrowRight />{" "}
+          </p>
+        </Link>
       </div>
     </>
   );

@@ -19,12 +19,12 @@ export default async function MenmuItem({ params }) {
         {topic === "javascript" ? <JsInstallation /> : null}
         {topic === "vite" ? <ViteInstallation /> : null}
         {topic === "" ? <Installation /> : null}
+        {/* {topic === "installation" ? <Installation /> : null}
         {topic === "installation" ? <Installation /> : null}
         {topic === "installation" ? <Installation /> : null}
         {topic === "installation" ? <Installation /> : null}
         {topic === "installation" ? <Installation /> : null}
-        {topic === "installation" ? <Installation /> : null}
-        {topic === "installation" ? <Installation /> : null}
+        {topic === "installation" ? <Installation /> : null} */}
       </div>
     </>
   );

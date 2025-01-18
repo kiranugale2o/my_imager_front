@@ -13,10 +13,12 @@ export default function LeftNavbar() {
       <div
         className={`${
           !nav ? "hidden" : "flex"
-        } mt-10 lg:mt-0 w-full bg-white lg:flex  flex-col`}
+        } mt-10 lg:mt-0 w-full bg-white lg:flex border  flex-col`}
       >
         <ul className="flex flex-col ">
-          <strong className=" p-2 text-black">Getting Started</strong>
+          <strong className=" p-2 text-black font-normal">
+            Getting Started
+          </strong>
         </ul>
         <ul className="flex flex-col p-1 ">
           {docsItems.map((d, i) => {
