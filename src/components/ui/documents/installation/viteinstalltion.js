@@ -2,7 +2,14 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { ArrowBigLeft, ArrowBigRight, Clipboard, Copy } from "lucide-react";
+import {
+  ArrowBigLeft,
+  ArrowBigRight,
+  ArrowLeft,
+  ArrowRight,
+  Clipboard,
+  Copy,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -104,11 +111,35 @@ const ViteInstallation = () => {
         </div>
       </div>
 
-      {/* step 3 */}
-
       <div className="step1 flex flex-col p-5 py-0">
         <div className="flex ">
           <div className="border px-3 py-1 bg-gray-200 rounded-full ">3</div>
+          <div className="text-[16px] font-semibold ml-3 mt-1">
+            Declare MyImager Environment Variables
+          </div>
+        </div>
+        <div className="content flex ">
+          <div className="border-l w-[1px] ml-4 mt-1 h-[190px] bg-gray-200"></div>
+          <div className="flex flex-col mt-3 ml-6">
+            <p className="text-md font-normal ">
+              Rename .env.example to .env.local and pass this two Variables to
+              the myimager functions:
+            </p>
+            <div className=" border mt-8 bg-black text-white flex flex-col w-[300px] lg:w-[600px]">
+              <code className="p-5">
+                MYIMAGER_CLIENT_KEY={"<Your MYIMAGER_CLIENT_KEY>"}
+                <br />
+                MYIMAGER_PROJECT_KEY={"<Your MYIMAGER_PROJECT_KEY>"}
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* step 4 */}
+
+      <div className="step1 flex flex-col p-5 py-0">
+        <div className="flex ">
+          <div className="border px-3 py-1  rounded-full ">4</div>
           <div className="text-[16px] font-semibold ml-3 mt-1">Final Steps</div>
         </div>
         <div className="content flex ">
@@ -166,10 +197,10 @@ const ViteInstallation = () => {
       </div>
       <div className="flex w-full justify-between mt-5">
         <Link href="/docs/installtion" className="text-black">
-          <ArrowBigLeft size={50} />
+          <ArrowLeft size={40} />
         </Link>
         <Link href="/docs/vite" className="text-black">
-          <ArrowBigRight size={50} />
+          <ArrowRight size={40} />
         </Link>
       </div>
     </div>

@@ -13,17 +13,15 @@ export default function LeftNavbar() {
       <div
         className={`${
           !nav ? "hidden" : "flex"
-        } mt-10 lg:mt-0 w-full bg-white lg:flex border  flex-col`}
+        } mt-10 lg:mt-0 w-full bg-white  lg:flex border  flex-col`}
       >
         <ul className="flex flex-col ">
-          <strong className=" p-2 text-black font-normal">
-            Getting Started
-          </strong>
+          <strong className=" p-2 text-black">Getting Started</strong>
         </ul>
         <ul className="flex flex-col p-1 ">
           {docsItems.map((d, i) => {
             return (
-              <>
+              <div key={i}>
                 {d.type === "started" ? (
                   <li key={i} className="grid-col-4">
                     <a
@@ -34,17 +32,18 @@ export default function LeftNavbar() {
                     </a>
                   </li>
                 ) : null}
-              </>
+              </div>
             );
           })}
         </ul>
+        <div className="w-full border-b h-[1px] "></div>
         <ul className="flex flex-col ">
           <strong className=" p-2 text-black">Installation</strong>
         </ul>
         <ul className="flex flex-col p-1 ">
           {docsItems.map((d, i) => {
             return (
-              <>
+              <div key={i}>
                 {d.type === "installation" ? (
                   <li key={i} className="grid-col-4">
                     <a
@@ -55,17 +54,18 @@ export default function LeftNavbar() {
                     </a>
                   </li>
                 ) : null}
-              </>
+              </div>
             );
           })}
         </ul>
+        <div className="w-full border-b h-[1px] "></div>
         <ul className="flex flex-col ">
           <strong className=" p-2 text-black">function</strong>
         </ul>
         <ul className="flex flex-col p-1 ">
           {docsItems.map((d, i) => {
             return (
-              <>
+              <div key={i}>
                 {d.type === "function" ? (
                   <li key={i} className="grid-col-4">
                     <a
@@ -76,11 +76,12 @@ export default function LeftNavbar() {
                     </a>
                   </li>
                 ) : null}
-              </>
+              </div>
             );
           })}
         </ul>
       </div>
     </>
   );
+  div;
 }

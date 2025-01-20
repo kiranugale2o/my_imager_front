@@ -13,7 +13,7 @@ import Link from "next/link";
 import { MenuIcon } from "lucide-react";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 
-export default function Header() {
+export default function Header({ user }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // State to toggle mobile menu visibility
   const router = useRouter();
   const navItem = [
@@ -83,17 +83,20 @@ export default function Header() {
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <LoginLink className="rounded-md border hover:bg-white hover:text-black px-5 py-2.5 text-sm font-medium text-white shadow">
-                  Sign in
-                </LoginLink>
-                <div className="hidden sm:flex">
-                  <a
-                    className="rounded-md bg-gray-100 px-3 py-2.5 text-sm font-medium text-red-400"
-                    href="/dashboard"
-                  >
-                    Start new project
-                  </a>
-                </div>
+                {user ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="rounded-md border hover:bg-white hover:text-black px-5 py-2.5 text-sm font-medium text-white shadow"
+                    >
+                      Dashboard
+                    </Link>
+                  </>
+                ) : (
+                  <LoginLink className="rounded-md border hover:bg-white hover:text-black px-5 py-2.5 text-sm font-medium text-white shadow">
+                    Sign in
+                  </LoginLink>
+                )}
               </div>
 
               <Sheet className="w-[700px]">
