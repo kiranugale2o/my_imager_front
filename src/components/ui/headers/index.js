@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { MenuIcon } from "lucide-react";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
@@ -16,6 +16,7 @@ import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 export default function Header({ user }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // State to toggle mobile menu visibility
   const router = useRouter();
+  const pathname = usePathname();
   const navItem = [
     {
       path: "/",
@@ -41,7 +42,9 @@ export default function Header({ user }) {
   ];
 
   return (
-    <header className="bg-black">
+    <header
+      className={`bg-black ${pathname.includes("/dashboard") ? "hidden" : ""}`}
+    >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">

@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../../card";
+import Link from "next/link";
 
 export default function ProjectPageLayout() {
   const maps = [1, 2, 2, 3, 3, 3];
@@ -24,25 +25,27 @@ export default function ProjectPageLayout() {
         <div className="block lg:flex lg:flex-wrap w-full  gap-3 grid  gap-y-6 lg:gap-3 ">
           {maps.map((d, i) => {
             return (
-              <Card
-                key={i}
-                className=" w-[330px] lg:w-[250px] bg-slate-300 text-black border-gray-200 hover:bg-slate-50"
-              >
-                <CardHeader className="">
-                  <CardTitle className="flex justify-between">
-                    <span className="text-sm">Project Name</span>
-                    <ArrowRightFromLineIcon className="hover:size-7" />
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-md">size:45GB</div>
-                </CardContent>
-                <CardFooter>
-                  <div className="text-sm font-normal ">
-                    Created At.12 jan 2025
-                  </div>
-                </CardFooter>
-              </Card>
+              <Link href="/dashboard/122">
+                <Card
+                  key={i}
+                  className=" w-[330px] lg:w-[250px] bg-slate-300 text-black border-gray-200 hover:bg-slate-50"
+                >
+                  <CardHeader className="">
+                    <CardTitle className="flex justify-between">
+                      <span className="text-sm">Project Name</span>
+                      <ArrowRightFromLineIcon className="hover:size-7" />
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-md">size:45GB</div>
+                  </CardContent>
+                  <CardFooter>
+                    <div className="text-sm font-normal ">
+                      Created At.12 jan 2025
+                    </div>
+                  </CardFooter>
+                </Card>
+              </Link>
             );
           })}
         </div>

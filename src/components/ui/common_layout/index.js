@@ -23,6 +23,14 @@ export default function CommonLayout({ user, children }) {
       </div>
 
       <main>{children}</main>
+      <footer className="bg-black text-gray-500 py-4">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2025 MyImager. All rights reserved.</p>
+          <p className="text-sm">
+            A simple solution for image uploading and management.
+          </p>
+        </div>
+      </footer>
     </>
   );
 }
