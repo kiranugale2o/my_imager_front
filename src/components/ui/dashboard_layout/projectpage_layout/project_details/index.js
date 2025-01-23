@@ -1,24 +1,78 @@
 "use client";
 import { docsItems } from "@/utils";
 import {
+  CalendarCog,
+  ChartBarIncreasingIcon,
   ChartNoAxesCombined,
   ClipboardEditIcon,
   Code2Icon,
   Codesandbox,
+  DivideSquare,
   FolderClosedIcon,
   Home,
+  Image,
   LucideStepBack,
   MenuIcon,
   NotepadText,
   Settings,
+  TriangleAlert,
   Tv2,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import React from "react";
+import { Bar, Doughnut } from "react-chartjs-2";
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import DocsCard from "@/components/ui/documents";
+import { Button } from "@/components/ui/button";
+
+// Register the chart components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
+
+export const imageData = {
+  name: "",
+  size: "",
+  createdAt: "",
+  updatedAt: "",
+  url: "",
+  type: "",
+};
 export default function ProjectDetailsPage() {
   const [MyContent, setContent] = useState("home");
+  const [currentImgData, setCurrentImgData] = useState(imageData);
+
   const [nav, setNav] = useState(false);
+
+  const ar = [1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 5];
+
   return (
     <>
       <div
@@ -174,12 +228,12 @@ export default function ProjectDetailsPage() {
 
                   <div className="block lg:flex w-full mt-5 justify-between">
                     <div className="flex flex-col">
-                      <div className="text-2xl py-10  font-bold font-normal font-light text-gray-600">
+                      <div className="text-2xl py-10  font-bold font-normal font-light text-gray-300">
                         Welcome back, [User Name]! Ready to organize your latest
                         Project? .
                       </div>
 
-                      <span className="text-[16px]  text-gray-500 font-sans font-extralight font-normal  ">
+                      <span className="text-[16px]  text-gray-400 font-sans font-extralight font-normal  ">
                         Myimager provide all access to manage your project as
                         your wish also add some more intractive features so
                         enjoy it ! MyImager is the all-in-one platform designed
@@ -504,13 +558,311 @@ export default function ProjectDetailsPage() {
                 </div>
               </>
             ) : null}
-            {MyContent === "storage" ? <>storage</> : null}
-            {MyContent === "reports" ? <>Reports</> : null}
-            {MyContent === "docs" ? <>Docs</> : null}
-            {MyContent === "setting" ? <>Setting</> : null}
+            {MyContent === "storage" ? (
+              <>
+                <div className="flex flex-col w-full lg:p-5">
+                  <div className="text-3xl text-white font-sans fotn-extralight">
+                    Storage
+                  </div>
+                  <div className="flex flex-col mt-10 border shadow-md w-full ">
+                    <div className="flex w-full  gap-3">
+                      <Table>
+                        <TableHeader>
+                          <TableRow className=" flex gap-24 p-2 lg:w-[500px] hover:bg-black">
+                            <TableHead className="  ">Name</TableHead>
+                            <TableHead>Size</TableHead>
+                            <TableHead>Type</TableHead>
+                            <TableHead className="text-right">
+                              Last Modified
+                            </TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <div className="flex w-full p-0 ">
+                          <TableBody className="w-auto max-h-[500px] overflow-auto   ">
+                            {ar.map((invoice, i) => (
+                              <TableRow
+                                key={i}
+                                className="  flex gap-10 hover:bg-gray-500"
+                              >
+                                <TableCell className="font-medium flex gap-1 hover:underline">
+                                  <Image />
+                                  imagrrrrrrrrrrrre1.png
+                                </TableCell>
+                                <TableCell>200.3 KB</TableCell>
+                                <TableCell>image/png</TableCell>
+                                <TableCell className="text-right">
+                                  Dec 11,2024
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                          <div className=" absolute top-[600px] lg:static border px-10 w-[400px] lg:flex flex-col  max-h-[500px] overflow-auto">
+                            <div className=" mt-5 flex text-2xl font-sans font-light text-gray-400">
+                              imagrrrrrrrrrrrre1.png
+                            </div>
+                            <div className="mt-4 ">
+                              <img
+                                className="items-center justify-center"
+                                src="/firebase.jpg"
+                                width={200}
+                                height={100}
+                                alt="imagrrrrrrrrrrrre1.png"
+                              />
+                            </div>
+                            <div className="mt-5 p-2 rounded-lg w-full  shadow-md">
+                              <div className="space-y-2 text-gray-600">
+                                <p>
+                                  <strong>Url:</strong>
+                                  <br />{" "}
+                                  <a
+                                    className="underline"
+                                    href="https://firebasestorage.googleapis.com/v0/b/dataaa-82ae4.appspot.com/o/imagix%2F136d8518-d2a5-436f-afe6-97ec57e992a4?alt=media&token=fb1ab8e5-f3b0-4be9-b545-7799ee1badc3"
+                                  >
+                                    imagrrrrrrrrrrrre1.png
+                                  </a>
+                                </p>
+                                <p>
+                                  <strong>Size:</strong>
+                                  <br /> metadata.size
+                                </p>
+                                <p>
+                                  <strong>Type:</strong>
+                                  <br /> metadata.type
+                                </p>
+                                <p>
+                                  <strong>Created:</strong>
+                                  <br /> metadata.created
+                                </p>
+                                <p>
+                                  <strong>Updated:</strong> <br />
+                                  metadata.updated
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Table>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : null}
+            {MyContent === "reports" ? (
+              <div className="flex flex-col w-full">
+                <StorageUsageChart />
+                <ProjectAnalysisBarChart />
+              </div>
+            ) : null}
+            {MyContent === "docs" ? (
+              <>
+                <DocsCard />
+              </>
+            ) : null}
+            {MyContent === "setting" ? (
+              <ProjectSetting setContent={setContent} />
+            ) : null}
           </div>
         </div>
       </div>
     </>
   );
 }
+//StorageUsagesChart Component
+export const StorageUsageChart = () => {
+  // Example storage data
+  const totalStorage = 5; // Total storage in GB
+  const usedStorage = 0.1; // Used storage in GB
+  const remainingStorage = totalStorage - usedStorage;
+
+  // Chart data
+  const data = {
+    labels: ["Used Storage", "Remaining Storage"],
+    datasets: [
+      {
+        label: "Storage Usage (GB)",
+        data: [usedStorage, remainingStorage],
+        backgroundColor: ["#4CAF50", "#FFEB3B"], // Green for used, Yellow for remaining
+        borderColor: ["#388E3C", "#FBC02D"], // Darker green for used, darker yellow for remaining
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  // Chart options
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Storage Usage From 5GB",
+      },
+    },
+  };
+
+  return (
+    <div className="flex flex-col w-full">
+      <div className="chart-container   p-2 lg:w-4/5 mx-auto">
+        <h2 className="text-center lg:mb-4">Storage Usage Chart</h2>
+        <Bar data={data} options={options} />
+      </div>
+    </div>
+  );
+};
+
+// ProjectAnalysisBarChart Component
+const ProjectAnalysisBarChart = () => {
+  // Example data for the project analysis
+  const data = {
+    labels: ["Storage Usage", "API Calls", "Uploads", "Downloads"], // The different metrics
+    datasets: [
+      {
+        label: " Project Analysis", // Label for the chart
+        data: [75, 120, 80, 95], // Example data points (you can replace these with real data)
+        backgroundColor: "rgba(53, 162, 235, 0.6)", // Bar color
+        borderColor: "rgba(53, 162, 235, 1)", // Border color
+        borderWidth: 1, // Border width
+      },
+    ],
+  };
+
+  // Chart options to customize the chart behavior
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "",
+      },
+      tooltip: {
+        callbacks: {
+          // Optional: Format the tooltip text if needed
+          label: (context) => {
+            const value = context.raw;
+            return `${value} units`; // Format the tooltip to show the unit
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Metrics", // Label for the x-axis
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Usage", // Label for the y-axis
+        },
+        min: 0, // Minimum value on the y-axis
+        max: 150, // Maximum value on the y-axis
+        ticks: {
+          stepSize: 25, // Step size for ticks
+        },
+      },
+    },
+  };
+
+  return (
+    <div className="lg:p-6  w-full max-w-4xl mx-auto   rounded-lg">
+      <Bar data={data} options={options} />
+    </div>
+  );
+};
+
+//Project Setting Component
+export const ProjectSetting = ({ setContent }) => {
+  return (
+    <div className="w-full  flex flex-col ">
+      <div className="text-3xl font-sans font-extralight ">Project Setting</div>
+      <div className="w-full lg:w-4/5 mt-8 border rounded-lg bg-dark-gray bg-dark-blue-gray p-4 text-white ">
+        <div className="block lg:flex p-5 justify-between">
+          <p className="text-[15px] font-bold font-sans text-gray-500">
+            Basic Setting
+          </p>
+          <div className="flex  flex-col w-full p-2 lg:p-0 lg:w-[500px]">
+            <label
+              htmlFor="project_name"
+              className="font-sans p-1 text-gray-500"
+            >
+              Project Name
+            </label>
+            <input
+              id="project_name"
+              value={"Project name"}
+              className="p-1 bg-transparent rounded-lg px-5 border border-gray-500"
+            />
+            <br />
+
+            <label htmlFor="project_key" className="font-sans  text-gray-500">
+              Project Api Key
+            </label>
+            <input
+              id="project_key"
+              value={"Project key"}
+              className="p-1 mt-1 bg-transparent rounded-lg px-5 border border-gray-500"
+            />
+          </div>
+        </div>
+        <div className="w-full border h-[1px] bg-gray-900"></div>
+        <div className="flex justify-end mt-3 gap-3">
+          <div className="p-1 text-sm border rounded-lg font-bold text-gray-100">
+            cancel
+          </div>
+          <Button
+            className=" rounded-md px-2 hover:border hover:border-red-500 bg-gradient-to-r from-red-300 via-red-500 to-purple-700 font-normal  text-sm"
+            disabled={false}
+          >
+            save
+          </Button>
+        </div>
+      </div>
+
+      <div className="p-3 mt-10 flex lg:w-[780px] rounded-lg border text-sm font-sans font-light justify-between">
+        <div className="flex mt-1  gap-2 text-lg">
+          <ChartBarIncreasingIcon />
+          {"    "} Project data that contains images,videos .{" "}
+        </div>
+
+        <div
+          className="border hover:bg-gray-300 hover:text-gray-900 font-sans p-2 rounded-lg  font-light"
+          onClick={() => {
+            setContent("storage");
+          }}
+        >
+          view your storage
+        </div>
+      </div>
+
+      <div className="p-3 mt-10 flex lg:w-[380px] rounded-lg border text-sm font-sans font-light justify-between">
+        <div className="flex gap-2 mt-1 text-lg">
+          <CalendarCog /> Project Created At 12 Jan 2025{". "}
+        </div>
+      </div>
+
+      <div className="mt-10 flex flex-col w-full">
+        <div className="flex text-xl font-sans font-bold">Project Analysis</div>
+        <ProjectAnalysisBarChart />
+      </div>
+
+      <div className="mt-10 flex flex-col w-full ">
+        <div className="flex text-xl font-sans font-bold">Delete Project </div>
+        <div className="p-5 border mt-5 lg:w-[780px] rounded">
+          <div className="flex flex-col p-3 border bg-red-700 rounded-lg border-rose-600">
+            <div className="flex">
+              <TriangleAlert /> If you delete this project then storage or
+              database also Remove.
+            </div>
+            <div className="mt-5 w-[60px] p-1 border border-red-900 rounded font-bold font-sans">
+              Delete
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
