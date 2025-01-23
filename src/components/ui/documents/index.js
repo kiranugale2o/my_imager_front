@@ -86,7 +86,7 @@ export default function DocsCard() {
             to use wherever you need them!
           </p>
         </section>
-        <Link href="/docs/installation" className="text-black">
+        <Link href="/docs/installation" className="text-gray-600">
           <p className="mt-10 text-end p-2 px-5 w-[60px]  border ">
             <ArrowRight />{" "}
           </p>

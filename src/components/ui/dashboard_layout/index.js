@@ -10,7 +10,10 @@ export default function DashboardLayout() {
 
   return (
     <>
-      <div className="bg-black text-white flex flex-col">
+      <div
+        className="bg-black 
+ text-white flex flex-col"
+      >
         <div className="flex w-full">
           <DashboardTopbar />
         </div>
