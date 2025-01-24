@@ -87,8 +87,8 @@ export default function Installation() {
               </code>{" "}
               file.
             </p>
-            <pre className="bg-white p-4 rounded-md mb-6">
-              <code className="text-black overflow-scroll lg:overflow-none ">
+            <pre className="bg-white p-4 overflow-scroll lg:overflow-none  rounded-md mb-6">
+              <code className="text-black   ">
                 {`components.json`}
                 {`{
   "style": "default",

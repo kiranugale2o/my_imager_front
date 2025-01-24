@@ -1,6 +1,7 @@
 "use client";
 import { dashboardMenu } from "@/utils";
-import { LogOut, MenuIcon } from "lucide-react";
+import { LogOut, MenuIcon, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function DashboardLeftNavbar({ setPage }) {
@@ -12,12 +13,12 @@ export default function DashboardLeftNavbar({ setPage }) {
         className="btn p-5 absolute top-[56px] right-[10px] lg:static lg:hidden "
         onClick={() => setNav(!nav)}
       >
-        <MenuIcon />
+        {nav ? <X /> : <MenuIcon />}
       </div>
       <div
         className={`${
           !nav ? "hidden" : "flex"
-        } mt-10 lg:mt-0 w-full bg-black min-h-screen text-white lg:flex  border-r   border-gray-400 flex-col`}
+        } absolute  lg:static mt-[60px] lg:mt-0 w-full p-10 lg:p-0 h-[600px]  bg-white lg:bg-black lg:min-h-screen text-white lg:flex  border-r   border-gray-400 flex-col`}
       >
         <ul className="flex flex-col px-2 ">
           <strong className="  p-2 text-gray-400 ">Projects</strong>
@@ -94,9 +95,12 @@ export default function DashboardLeftNavbar({ setPage }) {
         </ul>
         <div className="w-full border-b h-[1px] border-gray-400"></div>
 
-        <button className="flex gap-2 mt-5  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-600">
-          Log Out <LogOut />
-        </button>
+        <Link
+          href={"/"}
+          className="flex gap-2 mt-5  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-600"
+        >
+          Back <LogOut />
+        </Link>
       </div>
     </>
   );

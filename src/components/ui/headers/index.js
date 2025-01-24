@@ -43,7 +43,7 @@ export default function Header({ user }) {
 
   return (
     <header
-      className={`bg-black border-b ${
+      className={`bg-black text-white border-b border-gray-700 ${
         pathname.includes("/dashboard") ? "hidden" : ""
       }`}
     >

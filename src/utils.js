@@ -125,11 +125,7 @@ export const dashboardMenu = [
     id: "Organizations",
     type: "Organizations",
   },
-  {
-    name: "Preferences",
-    id: "Preferences",
-    type: "Account",
-  },
+
   {
     name: "Access Tokens",
     id: "Access_Tokens",

@@ -17,6 +17,7 @@ import {
   Settings,
   TriangleAlert,
   Tv2,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -89,7 +90,7 @@ export default function ProjectDetailsPage() {
         className="btn absolute  right-[2px] text-white p-3 lg:hidden"
         onClick={() => setNav(!nav)}
       >
-        <MenuIcon />
+        {nav ? <X /> : <MenuIcon />}
       </div>
       <div
         className={`  block lg:flex w-full    bg-black text-white min-h-screen`}

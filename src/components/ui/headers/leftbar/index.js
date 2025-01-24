@@ -1,19 +1,22 @@
 "use client";
 import { docsItems } from "@/utils";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, X } from "lucide-react";
 import { useState } from "react";
 
 export default function LeftNavbar() {
   const [nav, setNav] = useState(false);
   return (
     <>
-      <div className="btn p-5 lg:hidden" onClick={() => setNav(!nav)}>
-        <MenuIcon />
+      <div
+        className="btn text-white p-5 absolute lg:static top-[70px] right-[10px] lg:hidden"
+        onClick={() => setNav(!nav)}
+      >
+        {nav ? <X /> : <MenuIcon />}
       </div>
       <div
         className={`${
           !nav ? "hidden" : "flex"
-        } mt-10 lg:mt-0 w-full min-h-screen  lg:flex border-r bg-black  flex-col`}
+        } mt-20 lg:mt-20 w-full min-h-screen  lg:flex border-r border-gray-700 bg-black  flex-col`}
       >
         <ul className="flex flex-col ">
           <strong className=" p-2 text-white">Getting Started</strong>
@@ -36,7 +39,7 @@ export default function LeftNavbar() {
             );
           })}
         </ul>
-        <div className="w-full border-b h-[1px] "></div>
+        <div className="w-full border-b border-gray-700 h-[1px] "></div>
         <ul className="flex flex-col ">
           <strong className=" p-2 text-white">Installation</strong>
         </ul>
@@ -58,7 +61,7 @@ export default function LeftNavbar() {
             );
           })}
         </ul>
-        <div className="w-full border-b h-[1px] "></div>
+        <div className="w-full border-b border-gray-700 h-[1px] "></div>
         <ul className="flex flex-col ">
           <strong className=" p-2 text-white">function</strong>
         </ul>
