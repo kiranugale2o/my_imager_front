@@ -9,7 +9,7 @@ export default function DocsCard() {
         <h1 className="bg-gradient-to-r from-red-300 via-red-500 to-purple-600 bg-clip-text text-[25px] font-extrabold text-transparent ">
           Introduction
         </h1>
-        <p className="text-lg text-gray-700 mb-6">
+        <p className="text-lg  mb-6">
           MyImager is a powerful and easy-to-use image storage service, built to
           help you upload, store, and manage your images with ease. Whether
           you're a developer, designer, or content creator, MyImager simplifies
@@ -18,10 +18,10 @@ export default function DocsCard() {
         </p>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-gray-500 mb-4">
             What is MyImager?
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg ">
             MyImager is a cloud-based image hosting service, similar to
             Firebase, designed to store your images and provide fast access
             through a unique URL. With MyImager, you can upload your images,
@@ -31,10 +31,10 @@ export default function DocsCard() {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-gray-500 mb-4">
             How does it work?
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg ">
             Once you upload an image to MyImager, the system stores it securely
             and provides you with a direct URL to access the image. You can then
             use this URL to display or share the image within your application
@@ -45,10 +45,10 @@ export default function DocsCard() {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-gray-500 mb-4">
             Features
           </h2>
-          <ul className="list-disc pl-8 text-lg text-gray-700">
+          <ul className="list-disc pl-8 text-lg ">
             <li>Secure and reliable cloud storage</li>
             <li>Fast image upload and retrieval</li>
             <li>
@@ -60,16 +60,16 @@ export default function DocsCard() {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-gray-500 mb-4">
             Why use MyImager?
           </h2>
-          <p className="text-lg text-gray-700 mb-4">
+          <p className="text-lg  mb-4">
             MyImager is designed to simplify your image storage process. Instead
             of worrying about setting up servers, managing file systems, or
             dealing with scalability issues, you can focus on building great
             applications while MyImager takes care of the rest.
           </p>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg ">
             It's easy to get started, and whether you're working on a small
             project or a large-scale application, MyImager can scale with your
             needs.
@@ -77,10 +77,10 @@ export default function DocsCard() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-gray-500 mb-4">
             Get Started
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg ">
             To begin using MyImager, simply sign up for an account and start
             uploading your images. You’ll get your image URLs right away, ready
             to use wherever you need them!

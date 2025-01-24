@@ -17,12 +17,12 @@ export default function DashboardLeftNavbar({ setPage }) {
       <div
         className={`${
           !nav ? "hidden" : "flex"
-        } mt-10 lg:mt-0 w-full bg-black min-h-screen text-white lg:flex  border-r   border-gray-800 flex-col`}
+        } mt-10 lg:mt-0 w-full bg-black min-h-screen text-white lg:flex  border-r   border-gray-400 flex-col`}
       >
         <ul className="flex flex-col px-2 ">
           <strong className="  p-2 text-gray-400 ">Projects</strong>
         </ul>
-        <ul className="flex flex-col px-2 p-1 border-b  border-gray-800">
+        <ul className="flex flex-col px-2 p-1 border-b  border-gray-400">
           {dashboardMenu.map((d, i) => {
             return (
               <div key={i}>
@@ -33,7 +33,7 @@ export default function DashboardLeftNavbar({ setPage }) {
                         setPage(d?.id);
                         setNav(!nav);
                       }}
-                      className="block  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-500"
+                      className="block  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-600"
                     >
                       {d.name}
                     </p>
@@ -57,7 +57,7 @@ export default function DashboardLeftNavbar({ setPage }) {
                         setPage(d?.id);
                         setNav(!nav);
                       }}
-                      className="block  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-500"
+                      className="block  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-600"
                     >
                       {d.name}
                     </p>
@@ -67,7 +67,7 @@ export default function DashboardLeftNavbar({ setPage }) {
             );
           })}
         </ul>
-        <div className="w-full border-b h-[1px] border-gray-800"></div>
+        <div className="w-full border-b h-[1px] border-gray-400"></div>
         <ul className="flex flex-col px-2 ">
           <strong className=" p-2 text-gray-400 ">Account</strong>
         </ul>
@@ -82,7 +82,7 @@ export default function DashboardLeftNavbar({ setPage }) {
                         setPage(d?.id);
                         setNav(!nav);
                       }}
-                      className="block  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-500"
+                      className="block  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-600"
                     >
                       {d.name}
                     </p>
@@ -92,9 +92,9 @@ export default function DashboardLeftNavbar({ setPage }) {
             );
           })}
         </ul>
-        <div className="w-full border-b h-[1px] border-gray-800"></div>
+        <div className="w-full border-b h-[1px] border-gray-400"></div>
 
-        <button className="flex gap-2 mt-5  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-500">
+        <button className="flex gap-2 mt-5  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-600">
           Log Out <LogOut />
         </button>
       </div>

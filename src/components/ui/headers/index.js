@@ -43,24 +43,28 @@ export default function Header({ user }) {
 
   return (
     <header
-      className={`bg-black ${pathname.includes("/dashboard") ? "hidden" : ""}`}
+      className={`bg-black border-b ${
+        pathname.includes("/dashboard") ? "hidden" : ""
+      }`}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex-1 md:flex md:items-center md:gap-12">
+          <div className="flex-1 md:flex md:items-center ">
             <a className="block text-teal-600" href="#">
               <span className="sr-only">Home</span>
-              <div className="flex absolute top-1 left-[-2px] lg:left-[2px]">
-                <img
-                  src="/logonew.png"
-                  className=""
-                  width={65}
-                  height={20}
-                  alt="logo"
-                />
-              </div>
-              <div className="flex gap-0 ">
-                <img src="/name.png" width={200} height={60} alt="logo" />
+              <div className="flex gap-5 ml-[-10px] lg:ml-[0px] lg:gap-0">
+                <div className="flex absolute top-1  lg:left-[2px]">
+                  <img
+                    src="/logonew.png"
+                    className=""
+                    width={65}
+                    height={20}
+                    alt="logo"
+                  />
+                </div>
+                <div className="flex gap-0  ml-[30px] lg:ml-[0px] ">
+                  <img src="/name.png" width={200} height={60} alt="logo" />
+                </div>
               </div>
             </a>
           </div>
@@ -90,13 +94,13 @@ export default function Header({ user }) {
                   <>
                     <Link
                       href="/dashboard"
-                      className="rounded-md border hover:bg-white hover:text-black px-5 py-2.5 text-sm font-medium text-white shadow"
+                      className="rounded-md border hover:bg-black hover:text-white px-5 py-2.5 text-sm font-medium text-white shadow"
                     >
                       Dashboard
                     </Link>
                   </>
                 ) : (
-                  <LoginLink className="rounded-md border hover:bg-white hover:text-black px-5 py-2.5 text-sm font-medium text-white shadow">
+                  <LoginLink className="rounded-md border hover:bg-black hover:text-white px-5 py-2.5 text-sm font-medium text-white shadow">
                     Sign in
                   </LoginLink>
                 )}
@@ -117,7 +121,7 @@ export default function Header({ user }) {
                               <SheetClose asChild className="">
                                 {/* <Link
                               href={d.path}
-                              className="font-semibold  uppercase flex min-w-[84px] max-w-[480px] cursor-pointer items-start  overflow-hidden  p-2 h-10 hover:text-red-600 border-b text-black font-bold leading-normal tracking-[0.015em] "
+                              className="font-semibold  uppercase flex min-w-[84px] max-w-[480px] cursor-pointer items-start  overflow-hidden  p-2 h-10 hover:text-red-600 border-b text-white font-bold leading-normal tracking-[0.015em] "
                             >
                               {d.name}
                             </Link> */}

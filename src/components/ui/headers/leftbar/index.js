@@ -13,10 +13,10 @@ export default function LeftNavbar() {
       <div
         className={`${
           !nav ? "hidden" : "flex"
-        } mt-10 lg:mt-0 w-full bg-white  lg:flex border  flex-col`}
+        } mt-10 lg:mt-0 w-full min-h-screen  lg:flex border-r bg-black  flex-col`}
       >
         <ul className="flex flex-col ">
-          <strong className=" p-2 text-black">Getting Started</strong>
+          <strong className=" p-2 text-white">Getting Started</strong>
         </ul>
         <ul className="flex flex-col p-1 ">
           {docsItems.map((d, i) => {
@@ -26,7 +26,7 @@ export default function LeftNavbar() {
                   <li key={i} className="grid-col-4">
                     <a
                       href={d?.path}
-                      className="block rounded-lg hover:bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+                      className="block rounded-lg hover:bg-white hover:text-black px-4 py-2 text-sm font-medium text-white"
                     >
                       {d.name}
                     </a>
@@ -38,7 +38,7 @@ export default function LeftNavbar() {
         </ul>
         <div className="w-full border-b h-[1px] "></div>
         <ul className="flex flex-col ">
-          <strong className=" p-2 text-black">Installation</strong>
+          <strong className=" p-2 text-white">Installation</strong>
         </ul>
         <ul className="flex flex-col p-1 ">
           {docsItems.map((d, i) => {
@@ -48,7 +48,7 @@ export default function LeftNavbar() {
                   <li key={i} className="grid-col-4">
                     <a
                       href={d?.path}
-                      className="block rounded-lg hover:bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+                      className="block rounded-lg hover:bg-white hover:text-black px-4 py-2 text-sm font-medium text-white"
                     >
                       {d.name}
                     </a>
@@ -60,7 +60,7 @@ export default function LeftNavbar() {
         </ul>
         <div className="w-full border-b h-[1px] "></div>
         <ul className="flex flex-col ">
-          <strong className=" p-2 text-black">function</strong>
+          <strong className=" p-2 text-white">function</strong>
         </ul>
         <ul className="flex flex-col p-1 ">
           {docsItems.map((d, i) => {
@@ -70,7 +70,7 @@ export default function LeftNavbar() {
                   <li key={i} className="grid-col-4">
                     <a
                       href={d?.path}
-                      className="block rounded-lg hover:bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+                      className="block rounded-lg  hover:bg-white hover:text-black px-4 py-2 text-sm font-medium text-white"
                     >
                       {d.name}
                     </a>

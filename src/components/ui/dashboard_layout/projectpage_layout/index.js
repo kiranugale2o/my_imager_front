@@ -28,7 +28,7 @@ export default function ProjectPageLayout() {
               <Link href="/dashboard/122">
                 <Card
                   key={i}
-                  className=" w-[330px] lg:w-[250px] bg-slate-300 text-black border-gray-200 hover:bg-slate-50"
+                  className=" w-[330px] lg:w-[250px] bg-transparant  text-white border-gray-200 hover:bg-white hover:text-black"
                 >
                   <CardHeader className="">
                     <CardTitle className="flex justify-between">

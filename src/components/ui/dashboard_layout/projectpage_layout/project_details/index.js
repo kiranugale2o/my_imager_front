@@ -45,6 +45,16 @@ import {
 } from "chart.js";
 import DocsCard from "@/components/ui/documents";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 // Register the chart components
 ChartJS.register(
@@ -86,7 +96,7 @@ export default function ProjectDetailsPage() {
       >
         {/* Left Bar */}
         <div
-          className={` leftbar w-[250px]  lg:flex flex-col border border-gray-700  min-h-screen ${
+          className={` leftbar w-[250px]  lg:flex flex-col border border-gray-700 bg-black min-h-screen ${
             !nav ? "hidden" : "flex"
           }  `}
         >
@@ -100,8 +110,14 @@ export default function ProjectDetailsPage() {
                 alt="logo"
               />
             </div>
-            <div className="flex gap-0 mt-[-56px] ml-[30px] ">
-              <img src="/name.png" width={200} height={60} alt="logo" />
+            <div className="flex gap-0 mt-[-56px] ml-[30px]  ">
+              <img
+                src="/name.png"
+                className=""
+                width={200}
+                height={60}
+                alt="logo"
+              />
             </div>
           </div>
 
@@ -112,7 +128,10 @@ export default function ProjectDetailsPage() {
                   setContent("home");
                   setNav(false);
                 }}
-                className="block flex gap-2 rounded-lg  px-4 py-2 text-md font-medium text-white bg-gray-800"
+                className={`block flex gap-1 rounded-lg  hover:bg-white 
+                  hover:text-gray-900 px-4 py-2 text-md font-medium text-gray-400 ${
+                    MyContent === "home" ? "bg-white text-gray-900" : ""
+                  }`}
               >
                 <Home /> Home
               </span>
@@ -125,7 +144,7 @@ export default function ProjectDetailsPage() {
                   setNav(false);
                 }}
                 className={`block flex gap-1 rounded-lg  hover:bg-white 
-                  hover:text-black px-4 py-2 text-md font-medium text-gray-400 ${
+                  hover:text-gray-900 px-4 py-2 text-md font-medium text-gray-400 ${
                     MyContent === "integration" ? "bg-white text-gray-900" : ""
                   }`}
               >
@@ -138,7 +157,7 @@ export default function ProjectDetailsPage() {
                   setContent("storage");
                   setNav(false);
                 }}
-                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-black px-4 py-2 text-md font-medium text-gray-400 ${
+                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-gray-900 px-4 py-2 text-md font-medium text-gray-400 ${
                   MyContent === "storage" ? "bg-white text-gray-900" : ""
                 }`}
               >
@@ -152,7 +171,7 @@ export default function ProjectDetailsPage() {
                   setContent("reports");
                   setNav(false);
                 }}
-                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-black px-4 py-2 text-md font-medium text-gray-400 ${
+                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-gray-900 px-4 py-2 text-md font-medium text-gray-400 ${
                   MyContent === "reports" ? "bg-white text-gray-900" : ""
                 }`}
               >
@@ -165,7 +184,7 @@ export default function ProjectDetailsPage() {
                   setContent("docs");
                   setNav(false);
                 }}
-                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-black px-4 py-2 text-md font-medium text-gray-400 ${
+                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-gray-900 px-4 py-2 text-md font-medium text-gray-400 ${
                   MyContent === "docs" ? "bg-white text-gray-900" : ""
                 }`}
               >
@@ -180,7 +199,7 @@ export default function ProjectDetailsPage() {
                   setContent("setting");
                   setNav(false);
                 }}
-                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-black px-4 py-2 text-md font-medium text-gray-400 ${
+                className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-gray-900 px-4 py-2 text-md font-medium text-gray-400 ${
                   MyContent === "setting" ? "bg-white text-gray-900" : ""
                 }`}
               >
@@ -191,7 +210,7 @@ export default function ProjectDetailsPage() {
             <li className="grid-col-4">
               <Link href="/dashboard">
                 <span
-                  className={`block flex gap-2 rounded-lg  hover:bg-white hover:text-black px-4 py-2 text-md font-medium text-gray-400 `}
+                  className={`block flex gap-2 rounded-lg hover:bg-white hover:text-gray-900 px-4 py-2 text-md font-medium text-gray-400 `}
                 >
                   <LucideStepBack />
                   Exit
@@ -202,7 +221,7 @@ export default function ProjectDetailsPage() {
         </div>
         <div className="flex flex-col w-full">
           {/* Top bar */}
-          <div className="topbar w-full border flex lg:gap-5 border-gray-700 h-[50px]">
+          <div className="topbar w-full border-b flex lg:gap-5 border-gray-600 h-[50px]">
             <div className="organization_name text-sm text-gray-300  p-3 font-bold font-sans">
               Kiran's Organizations
             </div>
@@ -217,7 +236,7 @@ export default function ProjectDetailsPage() {
             {MyContent === "home" ? (
               <>
                 <div className="flex flex-col w-full py-5 ">
-                  <div className="block lg:flex w-full justify-between">
+                  <div className="block p-6 border-b lg:flex w-full justify-between">
                     <div className="text-3xl  font-bold font-normal font-extralight ">
                       Project Name{" "}
                     </div>
@@ -228,12 +247,12 @@ export default function ProjectDetailsPage() {
 
                   <div className="block lg:flex w-full mt-5 justify-between">
                     <div className="flex flex-col">
-                      <div className="text-2xl py-10  font-bold font-normal font-light text-gray-300">
+                      <div className="text-2xl py-10  font-bold font-normal font-light text-gray-200">
                         Welcome back, [User Name]! Ready to organize your latest
                         Project? .
                       </div>
 
-                      <span className="text-[16px]  text-gray-400 font-sans font-extralight font-normal  ">
+                      <span className="text-[16px]  text-gray-300 font-sans font-extralight font-normal  ">
                         Myimager provide all access to manage your project as
                         your wish also add some more intractive features so
                         enjoy it ! MyImager is the all-in-one platform designed
@@ -264,7 +283,7 @@ export default function ProjectDetailsPage() {
             {MyContent === "integration" ? (
               <>
                 <div className=" flex flex-col w-full lg:w-[960px] py-5">
-                  <div className="text-2xl font-sans fotn-extralight ">
+                  <div className="text-3xl p-6 border-b font-sans fotn-extralight ">
                     Project Integration
                   </div>
 
@@ -561,7 +580,7 @@ export default function ProjectDetailsPage() {
             {MyContent === "storage" ? (
               <>
                 <div className="flex flex-col w-full lg:p-5">
-                  <div className="text-3xl text-white font-sans fotn-extralight">
+                  <div className="text-3xl p-6 border-b text-white font-sans fotn-extralight">
                     Storage
                   </div>
                   <div className="flex flex-col mt-10 border shadow-md w-full ">
@@ -649,6 +668,9 @@ export default function ProjectDetailsPage() {
             ) : null}
             {MyContent === "reports" ? (
               <div className="flex flex-col w-full">
+                <div className="flex border-b p-6 text-3xl font-sans font-extralight ">
+                  Project Reports
+                </div>
                 <StorageUsageChart />
                 <ProjectAnalysisBarChart />
               </div>
@@ -776,9 +798,12 @@ const ProjectAnalysisBarChart = () => {
 
 //Project Setting Component
 export const ProjectSetting = ({ setContent }) => {
+  const [btn, setBtn] = useState(false);
   return (
     <div className="w-full  flex flex-col ">
-      <div className="text-3xl font-sans font-extralight ">Project Setting</div>
+      <div className="text-3xl font-sans font-extralight  p-6 border-b ">
+        Project Setting
+      </div>
       <div className="w-full lg:w-4/5 mt-8 border rounded-lg bg-dark-gray bg-dark-blue-gray p-4 text-white ">
         <div className="block lg:flex p-5 justify-between">
           <p className="text-[15px] font-bold font-sans text-gray-500">
@@ -808,7 +833,7 @@ export const ProjectSetting = ({ setContent }) => {
             />
           </div>
         </div>
-        <div className="w-full border h-[1px] bg-gray-900"></div>
+        <div className="w-full border-b bg-gray-900"></div>
         <div className="flex justify-end mt-3 gap-3">
           <div className="p-1 text-sm border rounded-lg font-bold text-gray-100">
             cancel
@@ -857,9 +882,34 @@ export const ProjectSetting = ({ setContent }) => {
               <TriangleAlert /> If you delete this project then storage or
               database also Remove.
             </div>
-            <div className="mt-5 w-[60px] p-1 border border-red-900 rounded font-bold font-sans">
+            {/* <div
+              onClick={setBtn(true)}
+              className="mt-5 w-[60px] p-1 border border-red-900 rounded font-bold font-sans"
+            >
               Delete
-            </div>
+            </div> */}
+            <Dialog>
+              <DialogTrigger className="mt-5 w-[60px] p-1 border border-red-900 rounded font-bold font-sans">
+                Delete
+              </DialogTrigger>
+              <DialogContent>
+                <DialogDescription>
+                  <div className="flex text-xl font-sans font-bold text-red-500">
+                    <TriangleAlert /> If you delete this project then storage or
+                    database also Remove.
+                  </div>
+                </DialogDescription>
+
+                <DialogFooter>
+                  <DialogClose>
+                    <div className="flex gap-3">
+                      <Button>No</Button>
+                      <Button onClick={() => alert("deleter")}>Yes</Button>
+                    </div>
+                  </DialogClose>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ export default async function MenmuItem({ params }) {
   const { topic } = await params;
   return (
     <>
-      <div className="item-center lg:px-60 py-20">
+      <div className="item-center bg-black text-white lg:px-60 py-20">
         <div className="text-[15px] px-50 text-gray-400 ">
           {"Docs > "}
           {topic}
