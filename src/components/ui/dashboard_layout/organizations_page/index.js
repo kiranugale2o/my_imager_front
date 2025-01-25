@@ -22,12 +22,7 @@ export default function OrgainizationLayout() {
               <Label htmlFor="name" className="text-gray-400">
                 Orgainization Name
               </Label>
-              <Input
-                type="name"
-                id="email"
-                className="text-gray-400"
-                value="Kiran's Org"
-              />
+              <Input type="name" id="email" value="Kiran's Org" />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="api" className="text-gray-400">

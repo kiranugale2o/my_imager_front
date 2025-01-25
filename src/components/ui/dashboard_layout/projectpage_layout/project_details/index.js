@@ -606,7 +606,7 @@ export default function ProjectDetailsPage() {
                               >
                                 <TableCell className="font-medium flex gap-1 hover:underline">
                                   <Image />
-                                  imagrrrrrrrrrrrre1.png
+                                  image1.png
                                 </TableCell>
                                 <TableCell>200.3 KB</TableCell>
                                 <TableCell>image/png</TableCell>
@@ -618,7 +618,7 @@ export default function ProjectDetailsPage() {
                           </TableBody>
                           <div className=" absolute top-[600px] lg:static border px-10 w-[400px] lg:flex flex-col  max-h-[500px] overflow-auto">
                             <div className=" mt-5 flex text-2xl font-sans font-light text-gray-400">
-                              imagrrrrrrrrrrrre1.png
+                              image1.png
                             </div>
                             <div className="mt-4 ">
                               <img
