@@ -8,6 +8,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { MenuIcon } from "lucide-react";
@@ -17,6 +28,25 @@ export default function Header({ user }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // State to toggle mobile menu visibility
   const router = useRouter();
   const pathname = usePathname();
+  const components = [
+    {
+      title: "Github Contribution",
+      href: "",
+    },
+    {
+      title: "Functions",
+      href: "",
+    },
+    {
+      title: "AI Integration",
+      href: "",
+    },
+    {
+      title: "Project Integration",
+      href: "",
+    },
+  ];
+
   const navItem = [
     {
       path: "/",
@@ -27,10 +57,7 @@ export default function Header({ user }) {
       path: "/docs",
       name: "Docs",
     },
-    {
-      path: "/developers",
-      name: "Developers",
-    },
+
     {
       path: "/blog",
       name: "Blogs",
@@ -38,6 +65,10 @@ export default function Header({ user }) {
     {
       path: "/contact",
       name: "Contact us",
+    },
+    {
+      path: "/developers",
+      name: "Developers",
     },
   ];
 
@@ -75,13 +106,46 @@ export default function Header({ user }) {
                 {navItem.map((d, i) => {
                   return (
                     <li key={i}>
-                      <a
-                        className="text-gray-500 text-white transition hover:text-red-500/75"
-                        href={d.path}
-                      >
-                        {" "}
-                        {d.name}{" "}
-                      </a>
+                      {d.path === "/developers" ? (
+                        <>
+                          <NavigationMenu>
+                            <NavigationMenuList>
+                              <NavigationMenuItem>
+                                <NavigationMenuTrigger className="text-white bg-black">
+                                  {d.name}
+                                </NavigationMenuTrigger>
+
+                                <NavigationMenuContent>
+                                  <ul className="grid w-[400px] gap-y-2  gap-3 p-6 md:w-[400px] md:grid-cols-2 lg:w-[250px] ">
+                                    {components.map((component) => (
+                                      <li
+                                        key={component.title}
+                                        className="grid gap-4"
+                                      >
+                                        <a
+                                          className="text-white bg-black  p-2 rounded-lg border  transition hover:text-red-500/75"
+                                          href={component.href}
+                                        >
+                                          {" "}
+                                          {component.title}
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </NavigationMenuContent>
+                              </NavigationMenuItem>
+                            </NavigationMenuList>
+                          </NavigationMenu>
+                        </>
+                      ) : (
+                        <a
+                          className="text-gray-500 text-white transition hover:text-red-500/75"
+                          href={d.path}
+                        >
+                          {" "}
+                          {d.name}{" "}
+                        </a>
+                      )}
                     </li>
                   );
                 })}
@@ -125,15 +189,48 @@ export default function Header({ user }) {
                             >
                               {d.name}
                             </Link> */}
-                                <li key={i} className="">
-                                  <a
-                                    className="text-gray-500 text-lg transition hover:text-gray-500/75"
-                                    href={d.path}
-                                  >
-                                    {" "}
-                                    {d.name}{" "}
-                                  </a>
-                                </li>
+                                {d.path === "/developers" ? (
+                                  <>
+                                    <NavigationMenu>
+                                      <NavigationMenuList>
+                                        <NavigationMenuItem>
+                                          <NavigationMenuTrigger className="text-white bg-black">
+                                            {d.name}
+                                          </NavigationMenuTrigger>
+
+                                          <NavigationMenuContent>
+                                            <ul className="grid w-[400px] gap-y-2  gap-3 p-6  w-[160px] md:grid-cols-2  ">
+                                              {components.map((component) => (
+                                                <li
+                                                  key={component.title}
+                                                  className="grid gap-4"
+                                                >
+                                                  <a
+                                                    className="text-white bg-black  p-2 rounded-lg border  transition hover:text-red-500/75"
+                                                    href={component.href}
+                                                  >
+                                                    {" "}
+                                                    {component.title}
+                                                  </a>
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </NavigationMenuContent>
+                                        </NavigationMenuItem>
+                                      </NavigationMenuList>
+                                    </NavigationMenu>
+                                  </>
+                                ) : (
+                                  <li key={i} className="">
+                                    <a
+                                      className="text-gray-500 text-lg transition hover:text-gray-500/75"
+                                      href={d.path}
+                                    >
+                                      {" "}
+                                      {d.name}{" "}
+                                    </a>
+                                  </li>
+                                )}
                               </SheetClose>
                             </ul>
                           </nav>
