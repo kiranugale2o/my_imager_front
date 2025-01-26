@@ -15,7 +15,7 @@ export default function DashboardTopbar({ mypage }) {
 
         <div className="hidden lg:flex border-r w-[1px] border-gray-400 h-[50px]"></div>
         <div className="hidden lg:flex text-[15px] font-bold text-gray-200 p-3">
-          {mypage === "project" ? "Project" : "Kiran's Orgainization"}
+          {mypage === "project" ? "Project" : "Kiran'sOrganization"}
         </div>
       </div>
     </>

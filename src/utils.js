@@ -217,3 +217,12 @@ export const brands = [
       "https://firebasestorage.googleapis.com/v0/b/devtech-b5946.appspot.com/o/logo7.jpg?alt=media&token=d679c01d-feb1-4f54-8f8e-3325892e6a41",
   },
 ];
+
+export const userInitialData = {
+  userId: "",
+  email: "",
+  first_name: "",
+  last_name: "",
+  profile_picture: "",
+  organization_name: "",
+};

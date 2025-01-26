@@ -4,7 +4,7 @@ import DashboardLeftNavbar from "../headers/dashboardLeftbar";
 import DashboardTopbar from "../headers/dashboardTopbar.js";
 import LeftNavbar from "../headers/leftbar";
 import ProjectPageLayout from "./projectpage_layout";
-import OrgainizationLayout from "./organizations_page";
+import OrganizationLayout from "./organization_page";
 import AccessTokenPage from "./access_token_page";
 import SettingsPage from "./security_page";
 
@@ -32,7 +32,7 @@ export default function DashboardLayout() {
             ) : null}
             {Mypage === "Organizations" ? (
               <div className="flex">
-                <OrgainizationLayout />
+                <OrganizationLayout />
               </div>
             ) : null}
             {Mypage === "Account" ? (

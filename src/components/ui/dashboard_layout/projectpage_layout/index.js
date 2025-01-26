@@ -67,7 +67,7 @@ export default function ProjectPageLayout() {
                 <form action={handleProject}>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="api" className="text-right">
-                      Orgainization
+                      Organization
                     </Label>
                     <Input
                       type="text"

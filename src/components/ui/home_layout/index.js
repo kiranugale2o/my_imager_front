@@ -12,7 +12,7 @@ export function HomePage() {
     <>
       <div className="bg-black">
         <section className="bg-black text-white">
-          <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+          <div className="mx-auto max-w-screen-xl px-4 py-10 lg:py-32 lg:flex lg:h-screen lg:items-center">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="bg-gradient-to-r from-red-300 via-red-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
                 Build Better Apps with Powerful
@@ -38,8 +38,8 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="flex flex-col gap-5">
-          <div className="overflow-hidden  lg:absolute lg:left-[30%] lg:w-[500px] bg-black border-b border-gray-900">
+        <section className="flex flex-col gap-5 mt-[-20px]">
+          <div className="overflow-hidden  lg:absolute lg:left-[30%] lg:w-[500px] bg-black lg:border-b border-gray-900">
             <div className="flex animate-marquee space-x-12">
               {brands.map((d) => {
                 return (
@@ -54,19 +54,19 @@ export function HomePage() {
               })}
             </div>
           </div>
-          <p className="text-sm text-gray-600 mx-[60px] lg:mx-0 absolute lg:left-[40%] mt-[60px] font-bold">
+          <p className="text-sm text-gray-600 mx-[70px] lg:mx-0 absolute lg:left-[40%]  mt-[70px] font-bold">
             This are our trusted partners.
           </p>
         </section>
 
-        <section className=" w-full block lg:flex mt-10 lg:mt-40 py-10 border-t border-gray-800 ">
+        <section className=" w-full block lg:flex mt-10 lg:mt-40 py-10 border-t border-gray-600 ">
           <div className="flex flex-col w-full justify-between">
             <div className="flex flex-col w-full">
               <div className="container mx-auto lg:p-6">
                 <h2 className="opacity-100 text-4xl ml-4 lg:text-6xl lg:mx-auto font-sans font-extralight">
                   Organize Your Media with Ease
                 </h2>
-                <p className="text-lg py-5 p-2 lg:p-auto lg:w-[600px]  mx-auto text-gray-700 ">
+                <p className="text-lg py-5 p-2 lg:p-auto lg:w-[600px]  mx-auto text-gray-400 ">
                   With MyImager, you can effortlessly categorize and organize
                   your images and videos into folders and albums. Two Steps Only
                   !
@@ -74,7 +74,7 @@ export function HomePage() {
               </div>
             </div>
             <div className="w-full block lg:flex">
-              <div className="lg:ml-10 flex flex-col mt-10   banner mx-auto w-full lg:w-[500px]">
+              <div className="lg:ml-10 flex p-4 lg:p-0 flex-col mt-10   banner mx-auto w-full lg:w-[500px]">
                 <img
                   src="/integration.png"
                   alt="integration banner"
@@ -84,7 +84,7 @@ export function HomePage() {
                   Project Integration
                 </span>
               </div>
-              <div className="lg:ml-10 flex  flex-col mt-10  banner mx-auto w-full lg:w-[500px]">
+              <div className="lg:ml-10 flex p-4 lg:p-0  flex-col mt-10  banner mx-auto w-full lg:w-[500px]">
                 <img
                   src="/storage.png"
                   alt="storage banner"
@@ -102,6 +102,30 @@ export function HomePage() {
           </div>
         </section>
 
+        <section className="flex w-full py-0">
+          {/* <div className="flex flex-col w-full"></div> */}
+          <div className="relative left-[50%] lg:w-[600px] transform -translate-x-[50%]">
+            {/* TV Image */}
+            <img
+              src="/tv.png"
+              alt="tv"
+              className="opacity-100 z-100 object-contain w-full h-full"
+            />
+
+            {/* Video */}
+            <video
+              className="absolute opacity-70 z-100 top-[56px] left-[50px] lg:top-[100px] lg:left-[80px] w-[270px]  lg:w-[430px] lg:h-[240px] object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="myimager.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </section>
+
         <section className=" w-full block lg:flex  py-10 border-t border-gray-800 ">
           <div className="block lg:flex  w-full justify-between">
             <div className="flex flex-col w-full">
@@ -109,7 +133,7 @@ export function HomePage() {
                 <h2 className="text-4xl ml-4 lg:text-6xl lg:mx-auto font-sans font-extralight">
                   Just Call The MyImager Functions !
                 </h2>
-                <p className="text-lg py-5 p-2 lg:p-auto lg:w-[600px]  mx-auto text-gray-700 ">
+                <p className="text-lg py-5 p-2 lg:p-auto lg:w-[600px]  mx-auto text-gray-400 ">
                   Don't Need to write multiple lines of code simply call the
                   function and use myimager storage and AI features .
                 </p>
@@ -172,7 +196,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="features" className="features mt-24">
+        <section id="features" className="features hidden mt-[54px]">
           <h2 className="section-title">Features</h2>
           <div className="container">
             <div className="feature">
@@ -197,12 +221,9 @@ export function HomePage() {
             </div>
 
             <div className="feature">
-              <img src="section2img1.jpg" alt="Character Storage" />
-              <h3>Character & Assets</h3>
-              <p>
-                Store game characters and assets with optimized file formats for
-                quick access.
-              </p>
+              <img src="/ai.jpg" alt="Character Storage" />
+              <h3>AI Integration</h3>
+              <p>We provide functions that work like a AI.</p>
             </div>
           </div>
         </section>
