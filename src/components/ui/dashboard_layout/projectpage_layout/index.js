@@ -26,7 +26,7 @@ export const projectInitialData = {
   projectName: "",
   date: "",
 };
-export default function ProjectPageLayout() {
+export default function ProjectPageLayout({ user }) {
   const [currentOrganizationData, setOrganizationData] = useState(
     projectInitialData
   );
@@ -138,7 +138,7 @@ export default function ProjectPageLayout() {
           </Dialog>
         </div>
         <div className="text-lg text-white font-semibold font-sans  font-extralight">
-          Dear Kiran Your Projects
+          Dear {user?.organization_name} Your Projects
         </div>
 
         <div className="block lg:flex lg:flex-wrap w-full  gap-3 grid  gap-y-6 lg:gap-3 ">

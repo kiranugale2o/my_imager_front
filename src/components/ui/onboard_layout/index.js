@@ -6,6 +6,8 @@ import { Input } from "../input";
 import { Label } from "../label";
 import { useState } from "react";
 import { userInitialData } from "@/utils";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function OnboardPage({ user }) {
   const [loading, setLoading] = useState(false);
@@ -18,6 +20,7 @@ export default function OnboardPage({ user }) {
     profile_picture: user?.picture,
   });
 
+  const router = useRouter();
   const handleOnboard = async (event) => {
     event.preventDefault(); // Prevent form from submitting normally
     setLoading(true);
@@ -29,13 +32,18 @@ export default function OnboardPage({ user }) {
         res.json().then((res) => {
           if (res.success) {
             alert("true");
+            Cookies.set("myimager_user_access", res?.token);
+            setLoading(false);
+            router.push("/dashboard");
           } else {
             alert("false");
+            setLoading(false);
           }
         });
       })
       .catch((error) => {
         console.log(error.message);
+        setLoading(false);
       })
       .finally(() => {});
   };

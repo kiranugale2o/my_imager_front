@@ -72,69 +72,6 @@ export default function Installation() {
             </p>
           </section>
 
-          <section className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-300 mb-4">
-              Opting Out of JavaScript
-            </h2>
-            <p className="text-lg text-white mb-4">
-              If you prefer not to use JavaScript, you can opt-out by using the{" "}
-              <code className="bg-black text-white border px-2 py-1 rounded">
-                tsx
-              </code>{" "}
-              flag in your{" "}
-              <code className="bg-black text-white border px-2 py-1 rounded">
-                components.json
-              </code>{" "}
-              file.
-            </p>
-            <pre className="bg-white p-4 overflow-scroll lg:overflow-none  rounded-md mb-6">
-              <code className="text-black   ">
-                {`components.json`}
-                {`{
-  "style": "default",
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "src/app/globals.css",
-    "baseColor": "zinc",
-    "cssVariables": true
-  },
-  "rsc": false,
-  "tsx": false,
-  "aliases": {
-    "utils": "~/lib/utils",
-    "components": "~/components"
-  }
-}`}
-              </code>
-            </pre>
-          </section>
-
-          <section className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-300 mb-4">
-              Configure Import Aliases
-            </h2>
-            <p className="text-lg text-white mb-4">
-              To configure import aliases in your project, you can use the
-              following{" "}
-              <code className="bg-black text-white border px-2 py-1 rounded">
-                jsconfig.json
-              </code>{" "}
-              file:
-            </p>
-            <pre className="bg-white p-4 rounded-md">
-              <code className="text-black">
-                {`jsconfig.json`}
-                {`{
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-}`}
-              </code>
-            </pre>
-          </section>
-
           <section>
             <h2 className="text-2xl font-semibold text-gray-300 mb-4">
               Conclusion
