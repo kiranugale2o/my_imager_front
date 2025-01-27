@@ -11,10 +11,10 @@ export function HomePage() {
   return (
     <>
       <div className="bg-black">
-        <section className="bg-black text-white">
-          <div className="mx-auto max-w-screen-xl px-4 py-10 lg:py-32 lg:flex lg:h-screen lg:items-center">
+        <section className="bg-black w-full text-white bg-[url('/bg.jpg')]  border-none bg-cover">
+          <div className="mx-auto max-w-screen-xl px-4 py-20 lg:py-32 lg:flex lg:h-screen lg:items-center">
             <div className="mx-auto max-w-3xl text-center">
-              <h1 className="bg-gradient-to-r from-red-300 via-red-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+              <h1 className="bg-gradient-to-r from-red-300  p-1 via-red-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
                 Build Better Apps with Powerful
                 <span className="sm:block"> Image Storage. </span>
               </h1>
@@ -38,7 +38,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="flex flex-col gap-5 mt-[-20px]">
+        <section className="flex flex-col gap-5 mt-[14px]">
           <div className="overflow-hidden  lg:absolute lg:left-[30%] lg:w-[500px] bg-black lg:border-b border-gray-900">
             <div className="flex animate-marquee space-x-12">
               {brands.map((d) => {
@@ -54,12 +54,12 @@ export function HomePage() {
               })}
             </div>
           </div>
-          <p className="text-sm text-gray-600 mx-[70px] lg:mx-0 absolute lg:left-[40%]  mt-[70px] font-bold">
+          <p className="text-sm text-gray-600 mx-[70px] lg:mx-0 absolute lg:left-[40%]  mt-[50px] font-bold">
             This are our trusted partners.
           </p>
         </section>
 
-        <section className=" w-full block lg:flex mt-10 lg:mt-40 py-10 border-t border-gray-600 ">
+        <section className=" w-full block lg:flex mt-10 lg:mt-20 py-10 border-t border-gray-900 ">
           <div className="flex flex-col w-full justify-between">
             <div className="flex flex-col w-full">
               <div className="container mx-auto lg:p-6">
@@ -101,7 +101,6 @@ export function HomePage() {
             </div> */}
           </div>
         </section>
-
         <section className="flex w-full py-0">
           {/* <div className="flex flex-col w-full"></div> */}
           <div className="relative left-[50%] lg:w-[600px] transform -translate-x-[50%]">

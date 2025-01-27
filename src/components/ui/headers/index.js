@@ -74,7 +74,7 @@ export default function Header({ user }) {
 
   return (
     <header
-      className={`bg-black text-white border-b border-gray-700 ${
+      className={`w-full bg-[url('/bg.jpg')]  text-white border-b border-gray-700    ${
         pathname.includes("/dashboard") ? "hidden" : ""
       }`}
     >
