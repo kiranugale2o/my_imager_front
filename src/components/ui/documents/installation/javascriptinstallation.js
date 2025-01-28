@@ -75,7 +75,7 @@ export default function JsInstallation() {
             <div className="flex flex-col mt-3 ml-6">
               <p className="text-md font-normal text-gray-300">
                 After complet this steps we can use all function provided by
-                myimager Example of uploadOnMyimagerAndGetUrl{"()"}:
+                myimager Example of sendOnMyimager{"()"}:
               </p>
               <div className=" border mt-8 flex flex-col w-[300px] rounded-lg   lg:w-[600px]">
                 <code className="p-5 lg:p-10 rounded-lg bg-white text-black break-keep whitespace-pre-wrap overflow-scroll h-[400px]">

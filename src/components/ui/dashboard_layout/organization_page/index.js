@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "../../button";
 
-export default function OrganizationLayout() {
+export default function OrganizationLayout({ user }) {
   return (
     <>
       <div className="flex w-full flex-col ">
@@ -22,7 +22,13 @@ export default function OrganizationLayout() {
               <Label htmlFor="name" className="text-gray-400">
                 Organization Name
               </Label>
-              <Input type="name" id="email" value="Kiran's Org" />
+              <Input
+                type="name"
+                id="email"
+                disabled
+                className="text-gray-400"
+                value={user?.organization_name}
+              />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="api" className="text-gray-400">
@@ -32,8 +38,8 @@ export default function OrganizationLayout() {
                 type="text"
                 id="api"
                 disabled
-                placeholder="Email"
-                value="SXDDDDDDDD$F$#@####"
+                className="text-gray-400"
+                value={user?._id}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -44,18 +50,24 @@ export default function OrganizationLayout() {
                 type="text"
                 id="email"
                 disabled
-                placeholder="Email"
-                value="kiranugale129@gmail.com"
+                className="text-gray-400"
+                value={user?.email}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="name" className="text-gray-400">
                 organizer Name
               </Label>
-              <Input type="text" id="name" disabled value="Kiran ugale" />
+              <Input
+                type="text"
+                id="name"
+                disabled
+                className="text-gray-400"
+                value={user?.first_name + " " + user?.last_name}
+              />
             </div>
           </div>
-          <div className="flex mt-5 item-end justify-end gap-5">
+          <div className="hidden flex mt-5 item-end justify-end gap-5">
             <Button>cancel</Button>
             <Button>Save</Button>
           </div>

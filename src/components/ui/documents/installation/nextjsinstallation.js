@@ -172,7 +172,7 @@ const NextInstallation = () => {
             </p>
             <div className=" border mt-8 rounded-lg flex flex-col w-[300px] bg-white  lg:w-[600px]">
               <code className="p-5 lg:p-10 rounded-lg bg-white text-black break-keep whitespace-pre-wrap overflow-scroll h-[400px]">
-                {` import {uploadOnMyimagerAndGetUrl} from "myimager";
+                {` import {sendOnMyimager} from "myimager";
  import { useState } from "react";
 
  export default function FileUpload() {
@@ -184,7 +184,7 @@ const NextInstallation = () => {
  const fileInput = event.target.files[0];
     if (fileInput) {
       setFile(fileInput); // Set the selected file in the state
-      uploadOnMyimagerAndGetUrl(file,MyImager_Client_Key,Project_Key)
+      sendOnMyimager(file,MyImager_Client_Key,Project_Key)
     }
   };
 

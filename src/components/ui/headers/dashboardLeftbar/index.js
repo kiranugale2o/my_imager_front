@@ -4,7 +4,7 @@ import { LogOut, MenuIcon, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function DashboardLeftNavbar({ setPage }) {
+export default function DashboardLeftNavbar({ setPage, user }) {
   const [nav, setNav] = useState(false);
 
   return (
@@ -60,7 +60,7 @@ export default function DashboardLeftNavbar({ setPage }) {
                       }}
                       className="block  hover:text-gray-300 px-4 py-2 text-md font-medium text-gray-600"
                     >
-                      {d.name}
+                      {user?.organization_name}
                     </p>
                   </li>
                 ) : null}

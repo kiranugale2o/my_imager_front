@@ -1,7 +1,7 @@
 import { BookLockIcon } from "lucide-react";
 import React from "react";
 
-const AccessTokenPage = () => {
+const AccessTokenPage = ({ user }) => {
   return (
     <div className=" text-gray-300">
       {/* Header Section */}
@@ -32,7 +32,7 @@ const AccessTokenPage = () => {
 
           <pre className="mt-3 bg-black w-full text-wrap h-[80px] px-4 lg:px-10 text-white border rounded">
             {`
-<Your MYIMAGER_CLIENT_KEY>
+${user?._id}
                 
             `}
           </pre>

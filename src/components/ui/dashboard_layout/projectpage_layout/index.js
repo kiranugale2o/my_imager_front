@@ -20,28 +20,45 @@ import { Label } from "../../label";
 import { Input } from "../../input";
 import { Button } from "../../button";
 import { useState, useTransition } from "react";
+import { formatDate } from "@/utils";
+import { useRouter } from "next/navigation";
 
-export const projectInitialData = {
-  organizationName: "",
-  projectName: "",
-  date: "",
-};
-export default function ProjectPageLayout({ user }) {
-  const [currentOrganizationData, setOrganizationData] = useState(
-    projectInitialData
-  );
+export default function ProjectPageLayout({ user, project }) {
+  const [currentOrganizationData, setOrganizationData] = useState({
+    ownerId: user?._id,
+    project_name: "",
+    date: formatDate(),
+  });
 
   const [error, setError] = useState(null);
   const [name, setName] = useState("create");
   const [isPending, setPending] = useState(false);
+  const router = useRouter();
 
-  const handleProject = () => {
+  const handleProject = async (event) => {
     console.log(currentOrganizationData);
-    setPending(true);
+    event.preventDefault(); // Prevent form from submitting normally
     setName("loading..");
+    setPending(true);
+    await fetch("/api/createproject", {
+      method: "POST",
+      body: JSON.stringify({ data: currentOrganizationData }),
+    }).then((res) =>
+      res.json().then((res) => {
+        if (res.success) {
+          alert(res.message);
+          setName("create");
+          setPending(false);
+          router.refresh("/dashboard");
+        } else {
+          alert(res.message);
+          setPending(false);
+          setName("create");
+        }
+      })
+    );
   };
 
-  const maps = [1, 2, 2, 3, 3, 3];
   return (
     <>
       <div className="flex lg:p-5 lg:px-10 flex-col w-full gap-5">
@@ -64,17 +81,17 @@ export default function ProjectPageLayout({ user }) {
                 interact with your new database.
               </div>
               <div className=" text-black grid gap-4 py-4">
-                <form action={handleProject}>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="api" className="text-right">
-                      Organization
+                <form onSubmit={handleProject} method="post">
+                  <div className="grid grid-cols-4 items-center gap-6">
+                    <Label htmlFor="api" className="w-full text-right">
+                      Your Organization
                     </Label>
                     <Input
                       type="text"
                       id="api"
                       disabled
                       placeholder="Email"
-                      value="SXDDDDDDDD$F$#@####"
+                      value={user?.organization_name}
                     />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
@@ -84,12 +101,12 @@ export default function ProjectPageLayout({ user }) {
                     <Input
                       id="name"
                       required
-                      value={currentOrganizationData.projectName}
+                      value={currentOrganizationData.project_name}
                       className="col-span-3"
                       onChange={(e) => {
                         setOrganizationData({
                           ...currentOrganizationData,
-                          projectName: e.target.value,
+                          project_name: e.target.value,
                         });
                       }}
                     />
@@ -102,7 +119,7 @@ export default function ProjectPageLayout({ user }) {
                       class=" mt-10 bg-black text-white py-2 px-4 rounded-lg flex items-center"
                     >
                       <svg
-                        class={`animate-spin h-5 w-5 mr-3 ${
+                        className={`animate-spin h-5 w-5 mr-3 ${
                           isPending ? "" : "hidden"
                         }`}
                         viewBox="0 0 24 24"
@@ -142,25 +159,22 @@ export default function ProjectPageLayout({ user }) {
         </div>
 
         <div className="block lg:flex lg:flex-wrap w-full  gap-3 grid  gap-y-6 lg:gap-3 ">
-          {maps.map((d, i) => {
+          {project.map((d, i) => {
             return (
-              <Link href="/dashboard/122">
-                <Card
-                  key={i}
-                  className=" w-[330px] lg:w-[250px] bg-transparant  text-white border-gray-200 hover:bg-white hover:text-black"
-                >
+              <Link key={i} href={`/dashboard/${d?._id}`}>
+                <Card className=" w-[330px] lg:w-[250px] bg-transparant  text-white border-gray-200 hover:bg-white hover:text-black">
                   <CardHeader className="">
                     <CardTitle className="flex justify-between">
-                      <span className="text-sm">Project Name</span>
+                      <span className="text-sm">{d?.project_name}</span>
                       <ArrowRightFromLineIcon className="hover:size-7" />
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-md">size:45GB</div>
+                    <div className="text-md">size:{d?.projectUseStorage}</div>
                   </CardContent>
                   <CardFooter>
                     <div className="text-sm font-normal ">
-                      Created At.12 jan 2025
+                      Created At.{d?.date}
                     </div>
                   </CardFooter>
                 </Card>

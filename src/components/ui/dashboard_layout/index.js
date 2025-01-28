@@ -8,7 +8,7 @@ import OrganizationLayout from "./organization_page";
 import AccessTokenPage from "./access_token_page";
 import SettingsPage from "./security_page";
 
-export default function DashboardLayout({ user }) {
+export default function DashboardLayout({ user, project }) {
   const [Mypage, setPage] = useState("project");
 
   return (
@@ -22,12 +22,12 @@ export default function DashboardLayout({ user }) {
         </div>
         <div className="flex w-full">
           <div className="flex   lg:static w-auto lg:w-[250px] ">
-            <DashboardLeftNavbar setPage={setPage} />
+            <DashboardLeftNavbar setPage={setPage} user={user} />
           </div>
           <div className="flex  w-full p-5 lg:w-[900px]">
             {Mypage === "project" ? (
               <div className="flex">
-                <ProjectPageLayout user={user} />
+                <ProjectPageLayout user={user} project={project} />
               </div>
             ) : null}
             {Mypage === "Organizations" ? (
@@ -46,7 +46,7 @@ export default function DashboardLayout({ user }) {
             ) : null}
             {Mypage === "Access_Tokens" ? (
               <div className="flex">
-                <AccessTokenPage />
+                <AccessTokenPage user={user} />
               </div>
             ) : null}
           </div>

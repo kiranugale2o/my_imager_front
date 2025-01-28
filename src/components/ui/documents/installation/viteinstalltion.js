@@ -159,7 +159,7 @@ const ViteInstallation = () => {
             </p>
             <div className=" border rounded-lg mt-8 flex flex-col w-[300px]  lg:w-[600px]">
               <code className="p-10  bg-white text-black break-keep whitespace-pre-wrap overflow-scroll h-[400px]">
-                {` import {uploadOnMyimagerAndGetUrl} from "myimager";
+                {` import {sendOnMyimager} from "myimager";
  import { useState } from "react";
 
  export default function FileUpload() {
@@ -171,7 +171,7 @@ const ViteInstallation = () => {
  const fileInput = event.target.files[0];
     if (fileInput) {
       setFile(fileInput); // Set the selected file in the state
-      uploadOnMyimagerAndGetUrl(file,MyImager_Client_Key,Project_Key)
+      sendOnMyimager(file,MyImager_Client_Key,Project_Key)
     }
   };
 

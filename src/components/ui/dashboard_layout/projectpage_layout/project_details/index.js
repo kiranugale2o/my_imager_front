@@ -20,7 +20,7 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -56,6 +56,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { useRouter } from "next/navigation";
 
 // Register the chart components
 ChartJS.register(
@@ -76,13 +77,11 @@ export const imageData = {
   url: "",
   type: "",
 };
-export default function ProjectDetailsPage() {
+export default function ProjectDetailsPage({ user, Projectdetails }) {
   const [MyContent, setContent] = useState("home");
   const [currentImgData, setCurrentImgData] = useState(imageData);
 
   const [nav, setNav] = useState(false);
-
-  const ar = [1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 5];
 
   return (
     <>
@@ -224,11 +223,11 @@ export default function ProjectDetailsPage() {
           {/* Top bar */}
           <div className="topbar w-full border-b flex lg:gap-5 border-gray-600 h-[50px]">
             <div className="organization_name text-sm text-gray-300  p-3 font-bold font-sans">
-              Kiran's Organizations
+              {user?.organization_name} {"  "}Organizations
             </div>
             <div className=" h-[26px] mt-3 border border-gray-600 "></div>
             <div className="project_name gap-1 lg:gap-4 flex text-sm text-gray-300  p-3 font-bold font-sans">
-              studybuddy <Code2Icon />
+              {Projectdetails?.project_name} <Code2Icon />
             </div>
           </div>
 
@@ -239,18 +238,18 @@ export default function ProjectDetailsPage() {
                 <div className="flex flex-col w-full py-5 ">
                   <div className="block p-6 border-b lg:flex w-full justify-between">
                     <div className="text-3xl  font-bold font-normal font-extralight ">
-                      Project Name{" "}
+                      {Projectdetails?.project_name}{" "}
                     </div>
                     <div className="text-md border p-1 rounded-md border-gray-800 font-bold font-normal text-gray-600 ">
-                      12 jan 2025
+                      {Projectdetails?.date}
                     </div>
                   </div>
 
                   <div className="block lg:flex w-full mt-5 justify-between">
                     <div className="flex flex-col">
                       <div className="text-2xl py-10  font-bold font-normal font-light text-gray-200">
-                        Welcome back, [User Name]! Ready to organize your latest
-                        Project? .
+                        Welcome back, {user?.first_name} Ready to organize your
+                        latest Project? .
                       </div>
 
                       <span className="text-[16px]  text-gray-300 font-sans font-extralight font-normal  ">
@@ -273,10 +272,13 @@ export default function ProjectDetailsPage() {
                     />
                   </div>
                   {/* section 2 */}
-                  <div className="w-full flex">
-                    <div className="w-full p-5">
-                      <img src="/project_home_ban2.png" alt="banner2" />
+                  <div className="w-full gap-4 mt-10 flex flex-col justify-between">
+                    <div className="text-2xl p-5 border-b border-gray-800 font-sans font-extralight">
+                      Project Access Key
                     </div>
+                    <code className="border border-gray-700 rounded-lg w-[500px] p-5 shadow-lg shadow-red-700">
+                      {Projectdetails?._id}
+                    </code>
                   </div>
                 </div>
               </>
@@ -308,16 +310,16 @@ export default function ProjectDetailsPage() {
                           <span className="text-red-500">{`const `}</span>
                           <span className="text-white">{`PROJECT_KEY`}</span>
                           <span className="text-red-500">{` = `}</span>
-                          <span className="text-orange-500">{`"XXXXXXXXXXXXXXXXXXXXXXXXX"`}</span>
+                          <span className="text-orange-500">{`${Projectdetails?._id}`}</span>
                           {`;`}
                         </code>
 
                         {/* MYIMAGER_CLIENT_KEY Declaration */}
-                        <code>
-                          <span className="text-red-500">{`const `}</span>
-                          <span className="text-white">{`MYIMAGER_CLIENT_KEY`}</span>
+                        <code className="flex-wrap">
+                          <span className="text-red-500">{`const `}</span>{" "}
+                          <span className="text-white">{`  MYIMAGER_CLIENT_KEY`}</span>
                           <span className="text-red-500">{` = `}</span>
-                          <span className="text-orange-500">{`"XXXXXXXXXXXXXXXXXXXXX"`}</span>
+                          <span className="text-orange-500">{`${user?._id}`}</span>
                           {`;`}
                         </code>
                       </div>
@@ -342,7 +344,7 @@ export default function ProjectDetailsPage() {
                         {/* Import Statement */}
                         <code>
                           <span className="text-red-500">{`import `}</span>
-                          <span className="text-white">{`{ uploadOnMyimagerAndGetUrl }`}</span>
+                          <span className="text-white">{`{ sendOnMyimager }`}</span>
                           <span className="text-red-500">{` from `}</span>
                           <span className="text-cyan-500">{`"myimager"`}</span>
                           {`;`}
@@ -366,7 +368,7 @@ export default function ProjectDetailsPage() {
                         <code>
                           <span className="text-red-500">{`const `}</span>
                           <span className="text-white">{`url = `}</span>
-                          <span className="text-cyan-500">{`uploadOnMyimagerAndGetUrl`}</span>
+                          <span className="text-cyan-500">{`sendOnMyimager`}</span>
                           {`(file, `}
                           <span className="text-orange-500">{`MYIMAGER_CLIENT_KEY`}</span>
                           {`, `}
@@ -405,7 +407,7 @@ export default function ProjectDetailsPage() {
                         {/* Import Statement */}
                         <code>
                           <span className="text-red-500">{`import `}</span>
-                          <span className="text-white">{`{ uploadOnMyimagerAndGetUrl }`}</span>
+                          <span className="text-white">{`{ sendOnMyimager }`}</span>
                           <span className="text-red-500">{` from `}</span>
                           <span className="text-cyan-500">{`"myimager";`}</span>
                           {`;`}
@@ -454,7 +456,7 @@ export default function ProjectDetailsPage() {
                         <code>
                           <span className="text-red-500">{`const `}</span>
                           {`url = `}
-                          <span className="text-cyan-500">{`uploadOnMyimagerAndGetUrl`}</span>
+                          <span className="text-cyan-500">{`sendOnMyimager`}</span>
                           {`(file, `}
                           <span className="text-orange-500">{`MYIMAGER_CLIENT_KEY`}</span>
                           {`, `}
@@ -509,8 +511,12 @@ export default function ProjectDetailsPage() {
                       Now You Get on this type Url
                     </div>
                     <br />
-                    <div className="text-md truncate p-3 text-base lg:text-lg w-full lg:p-4  text-blue-600 font-sans bg-gray-900 border rounded-lg font-extralight">
-                      {`https://firebasestorage.googleapis.com/v0/b/******************/o/riched.jpeg?alt=media&token=0a6559e1-82a7-408d-95f1-3bdf4632c50f`}
+                    <div className="text-md flex-wrap truncate p-3 text-base lg:text-lg w-full lg:p-4  text-blue-600 font-sans bg-gray-900 border rounded-lg font-extralight">
+                      {`{
+                      url:"https://firebasestorage.googleapis.com/v0/b/image.jpg/",
+                      image_size:23kbps,
+                      image_name:"image1.jpg"
+                     }`}
                     </div>
                   </div>
                   <div className="w-full mt-10 border bg-gray-700"></div>
@@ -586,82 +592,92 @@ export default function ProjectDetailsPage() {
                   </div>
                   <div className="flex flex-col mt-10 border shadow-md w-full ">
                     <div className="flex w-full  gap-3">
-                      <Table>
-                        <TableHeader>
-                          <TableRow className=" flex gap-24 p-2 lg:w-[500px] hover:bg-black">
-                            <TableHead className="  ">Name</TableHead>
-                            <TableHead>Size</TableHead>
-                            <TableHead>Type</TableHead>
-                            <TableHead className="text-right">
-                              Last Modified
-                            </TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <div className="flex w-full p-0 ">
-                          <TableBody className="w-auto max-h-[500px] overflow-auto   ">
-                            {ar.map((invoice, i) => (
-                              <TableRow
-                                key={i}
-                                className="  flex gap-10 hover:bg-gray-500"
-                              >
-                                <TableCell className="font-medium flex gap-1 hover:underline">
-                                  <Image />
-                                  image1.png
-                                </TableCell>
-                                <TableCell>200.3 KB</TableCell>
-                                <TableCell>image/png</TableCell>
-                                <TableCell className="text-right">
-                                  Dec 11,2024
-                                </TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                          <div className=" absolute top-[600px] lg:static border px-10 w-[400px] lg:flex flex-col  max-h-[500px] overflow-auto">
-                            <div className=" mt-5 flex text-2xl font-sans font-light text-gray-400">
-                              image1.png
-                            </div>
-                            <div className="mt-4 ">
-                              <img
-                                className="items-center justify-center"
-                                src="/firebase.jpg"
-                                width={200}
-                                height={100}
-                                alt="imagrrrrrrrrrrrre1.png"
-                              />
-                            </div>
-                            <div className="mt-5 p-2 rounded-lg w-full  shadow-md">
-                              <div className="space-y-2 text-gray-600">
-                                <p>
-                                  <strong>Url:</strong>
-                                  <br />{" "}
-                                  <a
-                                    className="underline"
-                                    href="https://firebasestorage.googleapis.com/v0/b/dataaa-82ae4.appspot.com/o/imagix%2F136d8518-d2a5-436f-afe6-97ec57e992a4?alt=media&token=fb1ab8e5-f3b0-4be9-b545-7799ee1badc3"
-                                  >
-                                    imagrrrrrrrrrrrre1.png
-                                  </a>
-                                </p>
-                                <p>
-                                  <strong>Size:</strong>
-                                  <br /> metadata.size
-                                </p>
-                                <p>
-                                  <strong>Type:</strong>
-                                  <br /> metadata.type
-                                </p>
-                                <p>
-                                  <strong>Created:</strong>
-                                  <br /> metadata.created
-                                </p>
-                                <p>
-                                  <strong>Updated:</strong> <br />
-                                  metadata.updated
-                                </p>
+                      {Projectdetails?.projectData.length !== 0 ? (
+                        <Table>
+                          <TableHeader>
+                            <TableRow className=" flex gap-24 p-2 lg:w-[500px] hover:bg-black">
+                              <TableHead className="  ">Name</TableHead>
+                              <TableHead>Size</TableHead>
+                              <TableHead>Type</TableHead>
+                              <TableHead className="text-right">
+                                Last Modified
+                              </TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <div className="flex w-full p-0 ">
+                            <TableBody className="w-auto max-h-[500px] overflow-auto   ">
+                              {Projectdetails?.projectData.map((invoice, i) => (
+                                <TableRow
+                                  key={i}
+                                  className="  flex gap-10 hover:bg-gray-500"
+                                >
+                                  <TableCell className="font-medium flex gap-1 hover:underline">
+                                    <Image />
+                                    image1.png
+                                  </TableCell>
+                                  <TableCell>200.3 KB</TableCell>
+                                  <TableCell>image/png</TableCell>
+                                  <TableCell className="text-right">
+                                    Dec 11,2024
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                            <div
+                              className={` absolute top-[600px] lg:static border px-10 w-[400px] lg:flex flex-col  max-h-[500px] overflow-auto `}
+                            >
+                              <div className=" mt-5 flex text-2xl font-sans font-light text-gray-400">
+                                image1.png
+                              </div>
+                              <div className="mt-4 ">
+                                <img
+                                  className="items-center justify-center"
+                                  src="/firebase.jpg"
+                                  width={200}
+                                  height={100}
+                                  alt="imagrrrrrrrrrrrre1.png"
+                                />
+                              </div>
+                              <div className="mt-5 p-2 rounded-lg w-full  shadow-md">
+                                <div className="space-y-2 text-gray-600">
+                                  <p>
+                                    <strong>Url:</strong>
+                                    <br />{" "}
+                                    <a
+                                      className="underline"
+                                      href="https://firebasestorage.googleapis.com/v0/b/dataaa-82ae4.appspot.com/o/imagix%2F136d8518-d2a5-436f-afe6-97ec57e992a4?alt=media&token=fb1ab8e5-f3b0-4be9-b545-7799ee1badc3"
+                                    >
+                                      imagrrrrrrrrrrrre1.png
+                                    </a>
+                                  </p>
+                                  <p>
+                                    <strong>Size:</strong>
+                                    <br /> metadata.size
+                                  </p>
+                                  <p>
+                                    <strong>Type:</strong>
+                                    <br /> metadata.type
+                                  </p>
+                                  <p>
+                                    <strong>Created:</strong>
+                                    <br /> metadata.created
+                                  </p>
+                                  <p>
+                                    <strong>Updated:</strong> <br />
+                                    metadata.updated
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </Table>
+                        </Table>
+                      ) : (
+                        <>
+                          <div className="p-5 text-2xl font-sans font-light text-red-400">
+                            Data Not Available
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -672,8 +688,8 @@ export default function ProjectDetailsPage() {
                 <div className="flex border-b p-6 text-3xl font-sans font-extralight ">
                   Project Reports
                 </div>
-                <StorageUsageChart />
-                <ProjectAnalysisBarChart />
+                <StorageUsageChart Projectdetails={Projectdetails} />
+                <ProjectAnalysisBarChart Projectdetails={Projectdetails} />
               </div>
             ) : null}
             {MyContent === "docs" ? (
@@ -682,7 +698,11 @@ export default function ProjectDetailsPage() {
               </>
             ) : null}
             {MyContent === "setting" ? (
-              <ProjectSetting setContent={setContent} />
+              <ProjectSetting
+                setContent={setContent}
+                Projectdetails={Projectdetails}
+                user={user}
+              />
             ) : null}
           </div>
         </div>
@@ -691,10 +711,19 @@ export default function ProjectDetailsPage() {
   );
 }
 //StorageUsagesChart Component
-export const StorageUsageChart = () => {
+export const StorageUsageChart = ({ Projectdetails }) => {
   // Example storage data
   const totalStorage = 5; // Total storage in GB
-  const usedStorage = 0.1; // Used storage in GB
+
+  const [usedStorage, setStorage] = useState(Projectdetails?.projectUseStorage);
+  const [factor, setFactor] = useState("KB");
+  useEffect(() => {
+    if (Projectdetails?.projectUseStorage >= 1000) {
+      setStorage(Projectdetails?.projectUseStorage / 1000);
+      setStorage("MB");
+    }
+  });
+
   const remainingStorage = totalStorage - usedStorage;
 
   // Chart data
@@ -736,7 +765,7 @@ export const StorageUsageChart = () => {
 };
 
 // ProjectAnalysisBarChart Component
-const ProjectAnalysisBarChart = () => {
+const ProjectAnalysisBarChart = ({ Projectdetails }) => {
   // Example data for the project analysis
   const data = {
     labels: ["Storage Usage", "API Calls", "Uploads", "Downloads"], // The different metrics
@@ -798,8 +827,24 @@ const ProjectAnalysisBarChart = () => {
 };
 
 //Project Setting Component
-export const ProjectSetting = ({ setContent }) => {
+export const ProjectSetting = ({ setContent, Projectdetails, user }) => {
   const [btn, setBtn] = useState(false);
+  const router = useRouter();
+  async function handleDelete() {
+    fetch("/api/deleteProject", {
+      method: "DELETE",
+      body: JSON.stringify({ id: Projectdetails?._id }),
+    }).then((res) =>
+      res.json().then((res) => {
+        if (res.success) {
+          alert(res.message);
+          router.push("/dashboard");
+        } else {
+          alert(res.message);
+        }
+      })
+    );
+  }
   return (
     <div className="w-full  flex flex-col ">
       <div className="text-3xl font-sans font-extralight  p-6 border-b ">
@@ -819,8 +864,9 @@ export const ProjectSetting = ({ setContent }) => {
             </label>
             <input
               id="project_name"
-              value={"Project name"}
-              className="p-1 bg-transparent rounded-lg px-5 border border-gray-500"
+              disabled
+              value={Projectdetails?.project_name}
+              className="p-1 text-gray-600 bg-transparent rounded-lg px-5 border border-gray-500"
             />
             <br />
 
@@ -829,23 +875,13 @@ export const ProjectSetting = ({ setContent }) => {
             </label>
             <input
               id="project_key"
-              value={"Project key"}
-              className="p-1 mt-1 bg-transparent rounded-lg px-5 border border-gray-500"
+              disabled
+              value={Projectdetails?._id}
+              className="p-1 text-gray-600 mt-1 bg-transparent rounded-lg px-5 border border-gray-500"
             />
           </div>
         </div>
         <div className="w-full border-b bg-gray-900"></div>
-        <div className="flex justify-end mt-3 gap-3">
-          <div className="p-1 text-sm border rounded-lg font-bold text-gray-100">
-            cancel
-          </div>
-          <Button
-            className=" rounded-md px-2 hover:border hover:border-red-500 bg-gradient-to-r from-red-300 via-red-500 to-purple-700 font-normal  text-sm"
-            disabled={false}
-          >
-            save
-          </Button>
-        </div>
       </div>
 
       <div className="p-3 mt-10 flex lg:w-[780px] rounded-lg border text-sm font-sans font-light justify-between">
@@ -866,7 +902,8 @@ export const ProjectSetting = ({ setContent }) => {
 
       <div className="p-3 mt-10 flex lg:w-[380px] rounded-lg border text-sm font-sans font-light justify-between">
         <div className="flex gap-2 mt-1 text-lg">
-          <CalendarCog /> Project Created At 12 Jan 2025{". "}
+          <CalendarCog /> Project Created At {Projectdetails?.date}
+          {". "}
         </div>
       </div>
 
@@ -905,7 +942,7 @@ export const ProjectSetting = ({ setContent }) => {
                   <DialogClose>
                     <div className="flex gap-3">
                       <Button>No</Button>
-                      <Button onClick={() => alert("deleter")}>Yes</Button>
+                      <Button onClick={handleDelete}>Yes</Button>
                     </div>
                   </DialogClose>
                 </DialogFooter>

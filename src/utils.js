@@ -43,7 +43,7 @@ export const docsItems = [
   },
   {
     path: "/docs/uploadimageandgeturl",
-    name: "uploadOnMyimagerAndGetUrl()",
+    name: "sendOnMyimager()",
     type: "function",
   },
   {
@@ -53,7 +53,7 @@ export const docsItems = [
   },
   {
     path: "/docs/uploadimageandgeturl",
-    name: "uploadOnMyimagerAndGetUrl()",
+    name: "sendOnMyimager()",
     type: "function",
   },
   {
@@ -63,7 +63,7 @@ export const docsItems = [
   },
   {
     path: "/docs/uploadimageandgeturl",
-    name: "uploadOnMyimagerAndGetUrl()",
+    name: "sendOnMyimager()",
     type: "function",
   },
   {
@@ -73,7 +73,7 @@ export const docsItems = [
   },
   {
     path: "/docs/uploadimageandgeturl",
-    name: "uploadOnMyimagerAndGetUrl()",
+    name: "sendOnMyimager()",
     type: "function",
   },
 ];
@@ -99,12 +99,12 @@ export const javascriptDocs = `
         fileDetails.style.display = 'block';
       
         // Upload the file and get the URL
-        uploadOnMyimagerAndGetUrl(fileInput, MyImager_Client_Key, Project_Key);
+        sendOnMyimager(fileInput, MyImager_Client_Key, Project_Key);
       }
     });
 
     // Simulate the upload and getting URL (you will need to implement this function)
-    function uploadOnMyimagerAndGetUrl(file, clientKey, projectKey) {
+    function sendOnMyimager(file, clientKey, projectKey) {
       // Simulate the upload process
       console.log('Uploading file:', file);
       console.log('Using Client Key:', clientKey);
@@ -226,3 +226,16 @@ export const userInitialData = {
   profile_picture: "",
   organization_name: "",
 };
+
+export function formatDate() {
+  const today = new Date(); // Get today's date
+  const year = today.getFullYear(); // Get the full year (e.g., 2025)
+  const month = String(today.getMonth() + 1).padStart(2, "0"); // Get the month (0-11) and add leading zero
+  const day = String(today.getDate()).padStart(2, "0"); // Get the day of the month and add leading zero
+
+  const options = { day: "2-digit", month: "short", year: "numeric" };
+  return new Date(`${year}-${month}-${day}`).toLocaleDateString(
+    "en-GB",
+    options
+  ); // 'en-GB' ensures the format is like '12 Jan 2025'
+}

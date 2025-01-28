@@ -8,6 +8,7 @@ import { cookies } from "next/headers";
 import { parse } from "cookie";
 import DatabaseConnection from "@/database";
 import User from "@/models/User";
+import Project from "@/models/Project";
 
 // export async function currentUser() {
 //   // Await headers() to get the headers correctly
@@ -48,6 +49,26 @@ export async function getUserDetails(id) {
   });
   if (user) {
     return JSON.parse(JSON.stringify(user));
+  } else {
+    return null;
+  }
+}
+
+export async function getUserProjects(ownerId) {
+  await DatabaseConnection();
+  const projects = await Project.find({ ownerId: ownerId });
+  if (projects) {
+    return JSON.parse(JSON.stringify(projects));
+  } else {
+    return null;
+  }
+}
+
+export async function getProjectDetails(id) {
+  await DatabaseConnection();
+  const projects = await Project.findOne({ _id: id });
+  if (projects) {
+    return JSON.parse(JSON.stringify(projects));
   } else {
     return null;
   }

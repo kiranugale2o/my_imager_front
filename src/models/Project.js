@@ -5,7 +5,7 @@ const ProjectSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  projecct_name: {
+  project_name: {
     type: String,
     require: true,
   },
@@ -15,7 +15,7 @@ const ProjectSchema = mongoose.Schema({
     default: 0,
   },
   date: {
-    type: Number,
+    type: String,
     require: true,
   },
   projectData: [
