@@ -13,10 +13,11 @@ export default async function Dashboard() {
   const user = await getUser();
   const userExit = await getUserDetails(user?.id);
   const project = await getUserProjects(userExit?._id);
+  console.log(userExit, "userrrr");
 
-  if (userExit) {
-    return <DashboardLayout user={userExit} project={project} />;
-  } else {
+  if (!userExit) {
     redirect("/onboard");
+  } else {
+    return <DashboardLayout user={userExit} project={project} />;
   }
 }

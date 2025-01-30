@@ -159,28 +159,29 @@ export default function ProjectPageLayout({ user, project }) {
         </div>
 
         <div className="block lg:flex lg:flex-wrap w-full  gap-3 grid  gap-y-6 lg:gap-3 ">
-          {project.map((d, i) => {
-            return (
-              <Link key={i} href={`/dashboard/${d?._id}`}>
-                <Card className=" w-[330px] lg:w-[250px] bg-transparant  text-white border-gray-200 hover:bg-white hover:text-black">
-                  <CardHeader className="">
-                    <CardTitle className="flex justify-between">
-                      <span className="text-sm">{d?.project_name}</span>
-                      <ArrowRightFromLineIcon className="hover:size-7" />
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-md">size:{d?.projectUseStorage}</div>
-                  </CardContent>
-                  <CardFooter>
-                    <div className="text-sm font-normal ">
-                      Created At.{d?.date}
-                    </div>
-                  </CardFooter>
-                </Card>
-              </Link>
-            );
-          })}
+          {project &&
+            project.map((d, i) => {
+              return (
+                <Link key={i} href={`/dashboard/${d?._id}`}>
+                  <Card className=" w-[330px] lg:w-[250px] bg-transparant  text-white border-gray-200 hover:bg-white hover:text-black">
+                    <CardHeader className="">
+                      <CardTitle className="flex justify-between">
+                        <span className="text-sm">{d?.project_name}</span>
+                        <ArrowRightFromLineIcon className="hover:size-7" />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-md">size:{d?.projectUseStorage}</div>
+                    </CardContent>
+                    <CardFooter>
+                      <div className="text-sm font-normal ">
+                        Created At.{d?.date}
+                      </div>
+                    </CardFooter>
+                  </Card>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </>

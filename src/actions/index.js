@@ -44,24 +44,40 @@ import { uploadImage } from "imager2";
 // }
 
 export async function getUserDetails(id) {
-  await DatabaseConnection();
-  const user = await User.findOne({
-    userId: id,
-  });
-  if (user) {
-    return JSON.parse(JSON.stringify(user));
-  } else {
+  try {
+    // Ensure that the database connection is established first
+    await DatabaseConnection();
+
+    // Query for a user by userId
+    const user = await User.findOne({ userId: id });
+    // If a user is found, return the user object as JSON
+    if (user) {
+      return JSON.parse(JSON.stringify(user));
+    } else {
+      return null; // Return null if no user is found
+    }
+  } catch (error) {
+    console.error("Error retrieving user details:", error);
     return null;
   }
 }
 
 export async function getUserProjects(ownerId) {
-  await DatabaseConnection();
-  const projects = await Project.find({ ownerId: ownerId });
-  if (projects) {
-    return JSON.parse(JSON.stringify(projects));
-  } else {
-    return null;
+  try {
+    // Ensure that the database connection is established first
+    await DatabaseConnection();
+
+    // Query for projects based on the ownerId
+    const projects = await Project.find({ ownerId: ownerId });
+
+    // Check if projects are found
+    if (projects.length > 0) {
+      return JSON.parse(JSON.stringify(projects)); // Convert to plain JSON objects
+    } else {
+      return null; // Return null if no projects are found
+    }
+  } catch (error) {
+    console.error("Error retrieving user projects:", error);
   }
 }
 

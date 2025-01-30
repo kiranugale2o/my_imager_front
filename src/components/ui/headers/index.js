@@ -158,7 +158,7 @@ export default function Header({ user }) {
                   <>
                     <Link
                       href="/dashboard"
-                      className="rounded-md border hover:bg-black hover:text-white px-5 py-2.5 text-sm font-medium text-white shadow"
+                      className="rounded-md border hover:bg-white hover:text-black px-5 py-2.5 text-sm font-medium text-white shadow"
                     >
                       Dashboard
                     </Link>
