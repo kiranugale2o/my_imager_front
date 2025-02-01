@@ -16,11 +16,12 @@ export default async function ProjectPage({ params }) {
 
   const { id } = await params;
   const details = await getProjectDetails(id);
+  console.log(details, "ddddddddd");
 
   if (userExit) {
     return (
       <>
-        {!details ? (
+        {details ? (
           <ProjectDetailsPage
             user={userExit}
             Projectdetails={details}

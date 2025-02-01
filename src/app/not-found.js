@@ -46,8 +46,7 @@
 
 "use client";
 
-import { getImage } from "@/actions";
-
+import { logMessage } from "imager-package";
 import { useState } from "react";
 //import { uploadImage } from "imager2"; // Correct way to import
 
@@ -58,9 +57,21 @@ export default function Custom404() {
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
-      const res = await getImage(file);
-      console.log("File selected:", res);
-      // No sendOnMyimager call for now
+      // No sendOnMyimager call for now https://myimager-api-1.onrender.com/api/sendImageOnMyimager
+      // fetch("https://myimager-api-1.onrender.com/api/sendImageOnMyimager", {
+      //   method: "POST",
+      //   body: file,
+      // });
+      // fetch("http://localhost:5000/api/sendImageOnMyimager", {
+      //   method: "POST",
+      //   body: JSON.stringify(file),
+      // }).then((res) => {
+      //   console.log(res);
+      // });
+      //  logMessage("hello");
+
+      const res = await logMessage(file);
+      console.log("next", res);
     }
   };
 

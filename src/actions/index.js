@@ -9,7 +9,7 @@ import { parse } from "cookie";
 import DatabaseConnection from "@/database";
 import User from "@/models/User";
 import Project from "@/models/Project";
-import { uploadImage } from "imager2";
+import { sendOnMyimager } from "myimager";
 
 // export async function currentUser() {
 //   // Await headers() to get the headers correctly
@@ -92,6 +92,8 @@ export async function getProjectDetails(id) {
 }
 
 export async function getImage(file) {
-  const res = await uploadImage(file);
+  const res = await sendOnMyimager(file);
+  console.log(res, "FFFfffff");
+
   return res;
 }
