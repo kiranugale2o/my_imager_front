@@ -69,17 +69,15 @@ ChartJS.register(
   ArcElement
 );
 
-export const imageData = {
-  name: "",
-  size: "",
-  createdAt: "",
-  updatedAt: "",
-  url: "",
-  type: "",
-};
 export default function ProjectDetailsPage({ user, Projectdetails }) {
   const [MyContent, setContent] = useState("home");
-  const [currentImgData, setCurrentImgData] = useState(imageData);
+  const [currentImgData, setCurrentImgData] = useState({
+    name: Projectdetails?.projectData[0]?.name,
+    size: Projectdetails?.projectData[0]?.size,
+    createdAt: Projectdetails?.projectData[0]?.date,
+    url: Projectdetails?.projectData[0]?.url,
+    type: Projectdetails?.projectData[0]?.type,
+  });
 
   const [nav, setNav] = useState(false);
 
@@ -595,8 +593,8 @@ export default function ProjectDetailsPage({ user, Projectdetails }) {
                       {Projectdetails?.projectData.length !== 0 ? (
                         <Table>
                           <TableHeader>
-                            <TableRow className=" flex gap-24 p-2 lg:w-[500px] hover:bg-black">
-                              <TableHead className="  ">Name</TableHead>
+                            <TableRow className=" flex justify-evenly  mt-2 lg:w-[600px] hover:bg-black">
+                              <TableHead className="">Name</TableHead>
                               <TableHead>Size</TableHead>
                               <TableHead>Type</TableHead>
                               <TableHead className="text-right">
@@ -606,17 +604,26 @@ export default function ProjectDetailsPage({ user, Projectdetails }) {
                           </TableHeader>
                           <div className="flex w-full p-0 ">
                             <TableBody className="w-auto max-h-[500px] overflow-auto   ">
-                              {Projectdetails?.projectData.map((invoice, i) => (
+                              {Projectdetails?.projectData.map((data, i) => (
                                 <TableRow
                                   key={i}
-                                  className="  flex gap-10 hover:bg-gray-500"
+                                  onClick={() => {
+                                    setCurrentImgData({
+                                      ...currentImgData,
+                                      name: data?.name,
+                                      size: data?.size,
+                                      url: data?.url,
+                                      createdAt: data?.date,
+                                    });
+                                  }}
+                                  className="w-full flex justify-between hover:bg-gray-500"
                                 >
-                                  <TableCell className="font-medium flex gap-1 hover:underline">
+                                  <TableCell className=" lg:w-[200px] font-medium  flex gap-1 hover:underline">
                                     <Image />
-                                    image1.png
+                                    {data?.name}
                                   </TableCell>
-                                  <TableCell>200.3 KB</TableCell>
-                                  <TableCell>image/png</TableCell>
+                                  <TableCell>{data?.size} KB</TableCell>
+                                  <TableCell>{data?.type}</TableCell>
                                   <TableCell className="text-right">
                                     Dec 11,2024
                                   </TableCell>
@@ -627,15 +634,15 @@ export default function ProjectDetailsPage({ user, Projectdetails }) {
                               className={` absolute top-[600px] lg:static border px-10 w-[400px] lg:flex flex-col  max-h-[500px] overflow-auto `}
                             >
                               <div className=" mt-5 flex text-2xl font-sans font-light text-gray-400">
-                                image1.png
+                                {currentImgData?.name}
                               </div>
                               <div className="mt-4 ">
                                 <img
                                   className="items-center justify-center"
-                                  src="/firebase.jpg"
+                                  src={currentImgData?.url}
                                   width={200}
                                   height={100}
-                                  alt="imagrrrrrrrrrrrre1.png"
+                                  alt={currentImgData?.name}
                                 />
                               </div>
                               <div className="mt-5 p-2 rounded-lg w-full  shadow-md">
@@ -645,26 +652,24 @@ export default function ProjectDetailsPage({ user, Projectdetails }) {
                                     <br />{" "}
                                     <a
                                       className="underline"
-                                      href="https://firebasestorage.googleapis.com/v0/b/dataaa-82ae4.appspot.com/o/imagix%2F136d8518-d2a5-436f-afe6-97ec57e992a4?alt=media&token=fb1ab8e5-f3b0-4be9-b545-7799ee1badc3"
+                                      href={currentImgData?.url}
                                     >
-                                      imagrrrrrrrrrrrre1.png
+                                      {" "}
+                                      {currentImgData?.name}
                                     </a>
                                   </p>
                                   <p>
                                     <strong>Size:</strong>
-                                    <br /> metadata.size
+                                    <br /> {currentImgData?.size}
+                                    {"  KB"}
                                   </p>
                                   <p>
                                     <strong>Type:</strong>
-                                    <br /> metadata.type
+                                    <br /> {currentImgData?.type}
                                   </p>
                                   <p>
                                     <strong>Created:</strong>
-                                    <br /> metadata.created
-                                  </p>
-                                  <p>
-                                    <strong>Updated:</strong> <br />
-                                    metadata.updated
+                                    <br /> {currentImgData?.createdAt}
                                   </p>
                                 </div>
                               </div>
@@ -714,19 +719,12 @@ export default function ProjectDetailsPage({ user, Projectdetails }) {
 export const StorageUsageChart = ({ Projectdetails }) => {
   // Example storage data
   const totalStorage = 5; // Total storage in GB
-
-  const [usedStorage, setStorage] = useState(Projectdetails?.projectUseStorage);
-  const [factor, setFactor] = useState("KB");
-  useEffect(() => {
-    if (Projectdetails?.projectUseStorage >= 1000) {
-      setStorage(Projectdetails?.projectUseStorage / 1000);
-      setStorage("MB");
-    }
-  });
+  const [usedStorage, setStorage] = useState(
+    Projectdetails?.projectUseStorage / (1024 * 1024)
+  );
 
   const remainingStorage = totalStorage - usedStorage;
 
-  // Chart data
   const data = {
     labels: ["Used Storage", "Remaining Storage"],
     datasets: [

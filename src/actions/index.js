@@ -84,6 +84,8 @@ export async function getUserProjects(ownerId) {
 export async function getProjectDetails(id) {
   await DatabaseConnection();
   const projects = await Project.findOne({ _id: id });
+  console.log(projects, "det");
+
   if (projects) {
     return JSON.parse(JSON.stringify(projects));
   } else {

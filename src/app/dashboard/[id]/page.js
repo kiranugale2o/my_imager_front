@@ -1,4 +1,5 @@
 import { getProjectDetails, getUserDetails } from "@/actions";
+import Custom404 from "@/app/not-found";
 
 import ProjectDetailsPage from "@/components/ui/dashboard_layout/projectpage_layout/project_details";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -16,7 +17,6 @@ export default async function ProjectPage({ params }) {
 
   const { id } = await params;
   const details = await getProjectDetails(id);
-  console.log(details, "ddddddddd");
 
   if (userExit) {
     return (
@@ -30,6 +30,7 @@ export default async function ProjectPage({ params }) {
           <>
             <div className="text-center text-3xl text-white">
               Project not found !
+              <Custom404 />
             </div>
           </>
         )}

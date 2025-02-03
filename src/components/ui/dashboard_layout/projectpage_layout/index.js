@@ -32,6 +32,7 @@ export default function ProjectPageLayout({ user, project }) {
 
   const [error, setError] = useState(null);
   const [name, setName] = useState("create");
+  const [btn, setBtn] = useState(false);
   const [isPending, setPending] = useState(false);
   const router = useRouter();
 
@@ -47,12 +48,14 @@ export default function ProjectPageLayout({ user, project }) {
       res.json().then((res) => {
         if (res.success) {
           alert(res.message);
+          setBtn(false);
           setName("create");
           setPending(false);
           router.refresh("/dashboard");
         } else {
           alert(res.message);
           setPending(false);
+          setBtn(false);
           setName("create");
         }
       })
@@ -63,7 +66,7 @@ export default function ProjectPageLayout({ user, project }) {
     <>
       <div className="flex lg:p-5 lg:px-10 flex-col w-full gap-5">
         <div className="flex">
-          <Dialog className="text-black">
+          <Dialog open={btn} onOpenChange={setBtn} className="text-black">
             <DialogTrigger className="text-black">
               <div className=" p-1 rounded-md px-2 hover:border hover:border-red-500 bg-gradient-to-r from-red-300 via-red-500 to-purple-700 font-normal  text-sm">
                 New Project
@@ -112,36 +115,35 @@ export default function ProjectPageLayout({ user, project }) {
                     />
                   </div>
 
-                  <DialogTrigger className="flex gap-5">
-                    <button
-                      type="submit"
-                      disabled={isPending}
-                      class=" mt-10 bg-black text-white py-2 px-4 rounded-lg flex items-center"
+                  <button
+                    type="submit"
+                    disabled={isPending}
+                    class=" mt-10 bg-black text-white py-2 px-4 rounded-lg flex items-center"
+                  >
+                    <svg
+                      className={`animate-spin h-5 w-5 mr-3 ${
+                        isPending ? "" : "hidden"
+                      }`}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <svg
-                        className={`animate-spin h-5 w-5 mr-3 ${
-                          isPending ? "" : "hidden"
-                        }`}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                          strokeOpacity="0.3"
-                        />
-                        <path
-                          fill="currentColor"
-                          d="M12 2a10 10 0 0 1 10 10H2A10 10 0 0 1 12 2z"
-                        />
-                      </svg>
-                      {isPending ? "Processing..." : "Create"}
-                    </button>
-
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        strokeOpacity="0.3"
+                      />
+                      <path
+                        fill="currentColor"
+                        d="M12 2a10 10 0 0 1 10 10H2A10 10 0 0 1 12 2z"
+                      />
+                    </svg>
+                    {isPending ? "Processing..." : "Create"}
+                  </button>
+                  <DialogTrigger className="flex gap-5">
                     <Button
                       type="button"
                       className="mt-10 bg-black text-white py-2 px-4 rounded-lg flex items-center"
@@ -171,7 +173,7 @@ export default function ProjectPageLayout({ user, project }) {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-md">size:{d?.projectUseStorage}</div>
+                      <div className="text-md">size:5GB</div>
                     </CardContent>
                     <CardFooter>
                       <div className="text-sm font-normal ">

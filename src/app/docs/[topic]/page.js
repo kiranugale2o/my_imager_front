@@ -1,4 +1,6 @@
 import Changelog from "@/components/ui/documents/changelog";
+import AskMyimagerExplanation from "@/components/ui/documents/function/askMyimager";
+import SendOnMyimager from "@/components/ui/documents/function/sendOnMyimager";
 import Installation from "@/components/ui/documents/installation";
 import JsInstallation from "@/components/ui/documents/installation/javascriptinstallation";
 import NextInstallation from "@/components/ui/documents/installation/nextjsinstallation";
@@ -19,6 +21,9 @@ export default async function MenmuItem({ params }) {
         {topic === "javascript" ? <JsInstallation /> : null}
         {topic === "vite" ? <ViteInstallation /> : null}
         {topic === "" ? <Installation /> : null}
+        {topic === "sendOnMyimager" ? <SendOnMyimager /> : null}
+        {topic === "askMyimager" ? <AskMyimagerExplanation /> : null}
+
         {/* {topic === "installation" ? <Installation /> : null}
         {topic === "installation" ? <Installation /> : null}
         {topic === "installation" ? <Installation /> : null}

@@ -20,7 +20,11 @@ const ProjectSchema = mongoose.Schema({
   },
   projectData: [
     {
-      type: String,
+      name: { type: String },
+      url: { type: String },
+      size: { type: Number },
+      type: { type: String },
+      date: { type: String },
     },
   ],
 });

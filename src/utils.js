@@ -37,43 +37,13 @@ export const docsItems = [
     type: "installation",
   },
   {
-    path: "/docs/uploadimage",
-    name: "uploadOnMyimager()",
-    type: "function",
-  },
-  {
-    path: "/docs/uploadimageandgeturl",
+    path: "/docs/sendOnMyimager",
     name: "sendOnMyimager()",
     type: "function",
   },
   {
-    path: "/docs/uploadimage",
-    name: "uploadOnMyimager()",
-    type: "function",
-  },
-  {
-    path: "/docs/uploadimageandgeturl",
-    name: "sendOnMyimager()",
-    type: "function",
-  },
-  {
-    path: "/docs/uploadimage",
-    name: "uploadOnMyimager()",
-    type: "function",
-  },
-  {
-    path: "/docs/uploadimageandgeturl",
-    name: "sendOnMyimager()",
-    type: "function",
-  },
-  {
-    path: "/docs/uploadimage",
-    name: "uploadOnMyimager()",
-    type: "function",
-  },
-  {
-    path: "/docs/uploadimageandgeturl",
-    name: "sendOnMyimager()",
+    path: "/docs/askMyimager",
+    name: "askMyimager()",
     type: "function",
   },
 ];

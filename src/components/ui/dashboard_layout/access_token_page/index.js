@@ -28,7 +28,9 @@ const AccessTokenPage = ({ user }) => {
 
         {/* How to Use the Access Token */}
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold">Access Token</h2>
+          <h2 className="text-2xl font-semibold">
+            Access Token {"(Client Key)"}
+          </h2>
 
           <pre className="mt-3 bg-black w-full text-wrap h-[80px] px-4 lg:px-10 text-white border rounded">
             {`
