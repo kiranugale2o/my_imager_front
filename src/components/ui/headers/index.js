@@ -31,19 +31,19 @@ export default function Header({ user }) {
   const components = [
     {
       title: "Github Contribution",
-      href: "",
+      href: "https://github.com/kiranugale2o/my_imager_front",
     },
     {
       title: "Functions",
-      href: "",
+      href: "/docs/sendOnMyimager",
     },
     {
       title: "AI Integration",
-      href: "",
+      href: "/docs/askMyimager",
     },
     {
       title: "Project Integration",
-      href: "",
+      href: "/docs",
     },
   ];
 

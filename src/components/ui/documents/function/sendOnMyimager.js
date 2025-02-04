@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const SendOnMyimager = () => {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-8 bg-gray-50 text-black rounded-lg shadow-lg">
+    <div className="max-w-4xl mx-auto px-6 py-8 bg-gray-50 text-black ">
       <h1 className="text-3xl font-semibold text-indigo-600 mb-6">
         sendOnMyimager(file, client_key, project_key)
       </h1>
