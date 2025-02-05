@@ -63,8 +63,8 @@ export default function Header({ user }) {
       name: "Blogs",
     },
     {
-      path: "/contact",
-      name: "Contact us",
+      path: "/join",
+      name: "Join us",
     },
     {
       path: "/developers",
