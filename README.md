@@ -8,7 +8,7 @@ This project includes the following key technologies and packages:
 - **Firebase** for storage and file handling.
 - **Chart.js** and **react-chartjs-2** for rendering interactive charts.
 - **Kinde Auth** for authentication.
-- **Radix UI** components for UI elements.
+- **Shadcn UI** components for UI elements.
 - **MyImager NPM Package** for specific image management functionality.
 
 ## Features
