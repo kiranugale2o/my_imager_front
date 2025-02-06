@@ -33,7 +33,7 @@ This project includes the following key technologies and packages:
 
 ### Authentication & UI:
 - **Kinde Auth**: A comprehensive authentication solution for handling user logins.
-- **Radix UI**: A set of unstyled, accessible UI components for building modern user interfaces.
+- **Shadcn UI**: A set of unstyled, accessible UI components for building modern user interfaces.
 
 ## Installation
 
