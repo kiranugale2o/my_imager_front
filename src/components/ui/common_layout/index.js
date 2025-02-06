@@ -27,7 +27,7 @@ export default function CommonLayout({ user, children }) {
         <div className="container mx-auto text-center">
           <p>&copy; 2025 MyImager. All rights reserved.</p>
           <p className="text-sm">
-            A simple solution for image uploading and management.
+            A simple solution for image uploading and management with easily.
           </p>
         </div>
       </footer>
