@@ -57,6 +57,7 @@ import {
 } from "@/components/ui/dialog";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 // Register the chart components
 ChartJS.register(
@@ -827,6 +828,7 @@ const ProjectAnalysisBarChart = ({ Projectdetails }) => {
 //Project Setting Component
 export const ProjectSetting = ({ setContent, Projectdetails, user }) => {
   const [btn, setBtn] = useState(false);
+  const { toast } = useToast();
   const router = useRouter();
   async function handleDelete() {
     fetch("/api/deleteProject", {
@@ -835,10 +837,15 @@ export const ProjectSetting = ({ setContent, Projectdetails, user }) => {
     }).then((res) =>
       res.json().then((res) => {
         if (res.success) {
-          alert(res.message);
+          toast({
+            title: "Delete successfully!",
+          });
           router.push("/dashboard");
         } else {
-          alert(res.message);
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+          });
         }
       })
     );

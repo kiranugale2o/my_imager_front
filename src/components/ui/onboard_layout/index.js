@@ -8,6 +8,7 @@ import { useState } from "react";
 import { userInitialData } from "@/utils";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 export default function OnboardPage({ user }) {
   const [loading, setLoading] = useState(false);
@@ -21,6 +22,7 @@ export default function OnboardPage({ user }) {
   });
 
   const router = useRouter();
+  const { toast } = useToast();
   const handleOnboard = async (event) => {
     event.preventDefault(); // Prevent form from submitting normally
     setLoading(true);
@@ -31,12 +33,17 @@ export default function OnboardPage({ user }) {
       .then((res) => {
         res.json().then((res) => {
           if (res.success) {
-            alert("true");
+            toast({
+              title: res.message,
+            });
             Cookies.set("myimager_user_access", res?.token);
             setLoading(false);
             router.push("/dashboard");
           } else {
-            alert("false");
+            toast({
+              variant: "destructive",
+              title: "Uh oh! Something went wrong.",
+            });
             setLoading(false);
           }
         });

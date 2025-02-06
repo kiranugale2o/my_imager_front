@@ -22,6 +22,7 @@ import { Button } from "../../button";
 import { useState, useTransition } from "react";
 import { formatDate } from "@/utils";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ProjectPageLayout({ user, project }) {
   const [currentOrganizationData, setOrganizationData] = useState({
@@ -35,6 +36,7 @@ export default function ProjectPageLayout({ user, project }) {
   const [btn, setBtn] = useState(false);
   const [isPending, setPending] = useState(false);
   const router = useRouter();
+  const { toast } = useToast();
 
   const handleProject = async (event) => {
     console.log(currentOrganizationData);
@@ -47,13 +49,19 @@ export default function ProjectPageLayout({ user, project }) {
     }).then((res) =>
       res.json().then((res) => {
         if (res.success) {
-          alert(res.message);
+          toast({
+            title: res.message,
+          });
           setBtn(false);
           setName("create");
           setPending(false);
           router.refresh("/dashboard");
         } else {
           alert(res.message);
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+          });
           setPending(false);
           setBtn(false);
           setName("create");

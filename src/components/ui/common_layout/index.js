@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Header from "../headers";
 import LeftNavbar from "../headers/leftbar";
+import { Toaster } from "../toaster";
 
 export default function CommonLayout({ user, children }) {
   const pathname = usePathname();
@@ -21,7 +22,7 @@ export default function CommonLayout({ user, children }) {
       </div>
 
       <main className="flex-grow">{children}</main>
-
+      <Toaster />
       <footer className="bg-black text-gray-500 py-4 mt-auto">
         <div className="container mx-auto text-center">
           <p>&copy; 2025 MyImager. All rights reserved.</p>

@@ -31,23 +31,6 @@ export default function Installation() {
               </div>
             </div>
           </Link>
-
-          <Link href="/docs/Remix" className="text-white">
-            <div className="mt-5 flex flex-col h-[140px] w-[300px] shadow-md bg-white text-black hover:shadow-lg  rounded-md border">
-              <div className="flex flex-col  p-5 py-6 mx-auto">
-                <img src="/remix.png" alt="next js" width={120} height={89} />
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/docs/astro" className="text-white">
-            <div className="mt-5 flex flex-col h-[140px] w-[300px] shadow-md bg-white text-black hover:shadow-lg  rounded-md border">
-              <div className="flex flex-col  p-5 py-6 mx-auto">
-                <img src="/astro.png" alt="next js" width={50} height={69} />
-                <p className="text-[18px] font-semibold">Astro</p>
-              </div>
-            </div>
-          </Link>
         </div>
 
         <div className="font-sans lg:p-8">
@@ -91,7 +74,7 @@ export default function Installation() {
               <ArrowLeftIcon />
             </p>
           </Link>
-          <Link href="/docs/changelog" className="text-white">
+          <Link href="/docs/nextjs" className="text-white">
             <p className="text-end p-2 px-5  border ">
               <ArrowRight />{" "}
             </p>

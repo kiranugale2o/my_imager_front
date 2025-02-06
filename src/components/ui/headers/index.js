@@ -67,6 +67,10 @@ export default function Header({ user }) {
       name: "Join us",
     },
     {
+      path: "/team",
+      name: "meet our team",
+    },
+    {
       path: "/developers",
       name: "Developers",
     },
@@ -173,25 +177,32 @@ export default function Header({ user }) {
                 )}
               </div>
 
-              <Sheet className="w-[700px]">
+              <Sheet className="w-[700px] ">
                 <SheetTrigger className={`flex mt-0  ml-2  lg:hidden`}>
                   <MenuIcon className="rounded bg-gray-100 p-2 size-9 text-gray-600 transition hover:text-gray-600/75" />
                 </SheetTrigger>
 
-                <SheetContent className="py-24">
+                <SheetContent className="py-24 bg-black text-white">
                   <div className=" flex flex-col lg:hidden justify-start  mt-1 gap-5   ">
+                    <SheetHeader>
+                      <SheetTitle>
+                        <div className="flex absolute top-1  lg:left-[2px]">
+                          <img
+                            src="/logonew.png"
+                            className=""
+                            width={65}
+                            height={20}
+                            alt="logo"
+                          />
+                        </div>
+                      </SheetTitle>
+                    </SheetHeader>
                     {navItem.map((d, i) => {
                       return (
                         <div key={d.name} className="text-start">
                           <nav aria-label="Global" className="">
                             <ul className="flex items-center gap-6 text-sm">
                               <SheetClose asChild className="">
-                                {/* <Link
-                              href={d.path}
-                              className="font-semibold  uppercase flex min-w-[84px] max-w-[480px] cursor-pointer items-start  overflow-hidden  p-2 h-10 hover:text-red-600 border-b text-white font-bold leading-normal tracking-[0.015em] "
-                            >
-                              {d.name}
-                            </Link> */}
                                 {d.path === "/developers" ? (
                                   <>
                                     <NavigationMenu>
@@ -202,7 +213,7 @@ export default function Header({ user }) {
                                           </NavigationMenuTrigger>
 
                                           <NavigationMenuContent>
-                                            <ul className="grid w-[400px] gap-y-2  gap-3 p-6  w-[160px] md:grid-cols-2  ">
+                                            <ul className="grid w-[400px] gap-y-2  gap-3 p-6 md:w-[400px] md:grid-cols-2 lg:w-[250px] ">
                                               {components.map((component) => (
                                                 <li
                                                   key={component.title}
@@ -224,9 +235,9 @@ export default function Header({ user }) {
                                     </NavigationMenu>
                                   </>
                                 ) : (
-                                  <li key={i} className="">
+                                  <li key={i} className="grid gap-2">
                                     <a
-                                      className="text-gray-500 text-lg transition hover:text-gray-500/75"
+                                      className="text-gray-500 border p-1 rounded-lg px-2 bg-black text-white  text-lg transition hover:text-gray-500/75"
                                       href={d.path}
                                     >
                                       {" "}

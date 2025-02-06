@@ -25,9 +25,7 @@ export default function BlogPage() {
               alt="Blog image"
             />
             <div className="px-6 py-4">
-              <h2 className="text-xl font-semibold text-gray-900">
-                Blog Post Title
-              </h2>
+              <h2 className="text-xl font-semibold text-gray-900">Myimager</h2>
               <p className="text-gray-700 text-base mt-2">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
                 at tristique risus, a placerat augue.
@@ -35,7 +33,7 @@ export default function BlogPage() {
             </div>
             <div className="px-6 py-4">
               <a
-                href="/blog-post"
+                href="/blog/post"
                 className="text-teal-600 hover:text-teal-800 text-sm font-medium"
               >
                 Read More
