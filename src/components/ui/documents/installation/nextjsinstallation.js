@@ -184,9 +184,16 @@ const NextInstallation = () => {
  const fileInput = event.target.files[0];
     if (fileInput) {
       setFile(fileInput); // Set the selected file in the state
+<<<<<<< HEAD
      const res=await sendOnMyimager(file,MyImager_Client_Key,Project_Key)
      console.log(res);
      setUrl(res.url);
+=======
+      const result =sendOnMyimager(file,MyImager_Client_Key,Project_Key);
+
+console.log(result)
+setUrl(result.url)
+>>>>>>> 990f96cdbe370ad750f6ac02d697d7e6423409c5
     }
   };
 

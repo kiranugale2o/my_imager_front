@@ -29,7 +29,7 @@ export function HomePage() {
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <a
                   className="block w-full rounded-full border border-red-300  px-12 py-3 text-sm font-medium text-white hover:bg-red-400 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-                  href="#"
+                  href="/dashboard"
                 >
                   Try it Now—Free for Developers
                 </a>
@@ -113,7 +113,7 @@ export function HomePage() {
 
             {/* Video */}
             <video
-              className="absolute opacity-70 z-100 top-[66px] left-[45px] lg:top-[100px] lg:left-[80px] w-[270px]  lg:w-[430px] lg:h-[240px] object-cover"
+              className="absolute opacity-70 z-100 top-[55px] left-[45px] lg:top-[100px] lg:left-[80px] w-[270px]  lg:w-[430px] lg:h-[240px] object-cover"
               autoPlay
               muted
               loop
