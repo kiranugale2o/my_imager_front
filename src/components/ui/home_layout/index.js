@@ -113,7 +113,7 @@ export function HomePage() {
 
             {/* Video */}
             <video
-              className="absolute opacity-70 z-100 top-[66px] left-[55px] lg:top-[100px] lg:left-[80px] w-[300px]  lg:w-[430px] lg:h-[240px] object-cover"
+              className="absolute opacity-70 z-100 top-[66px] left-[45px] lg:top-[100px] lg:left-[80px] w-[270px]  lg:w-[430px] lg:h-[240px] object-cover"
               autoPlay
               muted
               loop
@@ -167,7 +167,7 @@ export function HomePage() {
                   {/* Method Call for getImageUrl */}
                   <code>
                     <span className="text-red-500">{`const `}</span>
-                    {`url = `}
+                    {`result =`}
                     <span className="text-cyan-500 underline">{`sendOnMyimager`}</span>
                     {`(file, `}
                     <span className="text-orange-500">{`MYIMAGER_CLIENT_KEY`}</span>
@@ -178,7 +178,7 @@ export function HomePage() {
 
                   {/* Calling setUrl */}
                   <code>
-                    <span className="text-white">{`setUrl(url);`}</span>
+                    <span className="text-white">{`setUrl(result.url);`}</span>
                   </code>
 
                   {/* Function Return */}
