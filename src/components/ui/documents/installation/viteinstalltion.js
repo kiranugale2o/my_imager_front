@@ -170,8 +170,10 @@ const ViteInstallation = () => {
  const handleFileChange = (event) => {
  const fileInput = event.target.files[0];
     if (fileInput) {
-      setFile(fileInput); // Set the selected file in the state
-      sendOnMyimager(file,MyImager_Client_Key,Project_Key)
+     setFile(fileInput); // Set the selected file in the state
+     const res=await sendOnMyimager(file,MyImager_Client_Key,Project_Key)
+     console.log(res);
+     setUrl(res.url);
     }
   };
 

@@ -69,7 +69,8 @@ export const javascriptDocs = `
         fileDetails.style.display = 'block';
       
         // Upload the file and get the URL
-        sendOnMyimager(fileInput, MyImager_Client_Key, Project_Key);
+       const res= sendOnMyimager(fileInput, MyImager_Client_Key, Project_Key);
+       console.log(res)
       }
     });
 

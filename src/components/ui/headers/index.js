@@ -185,13 +185,21 @@ export default function Header({ user }) {
                 <SheetContent className="py-24 bg-black text-white">
                   <div className=" flex flex-col lg:hidden justify-start  mt-1 gap-5   ">
                     <SheetHeader>
-                      <SheetTitle>
+                      <SheetTitle className="flex">
                         <div className="flex absolute top-1  lg:left-[2px]">
                           <img
                             src="/logonew.png"
                             className=""
                             width={65}
                             height={20}
+                            alt="logo"
+                          />
+                        </div>
+                        <div className="flex gap-0  ml-[30px] lg:ml-[0px] ">
+                          <img
+                            src="/name.png"
+                            width={100}
+                            height={60}
                             alt="logo"
                           />
                         </div>
@@ -237,7 +245,7 @@ export default function Header({ user }) {
                                 ) : (
                                   <li key={i} className="grid gap-2">
                                     <a
-                                      className="text-gray-500 border p-1 rounded-lg px-2 bg-black text-white  text-lg transition hover:text-gray-500/75"
+                                      className="text-gray-500 border-b w-[300px] p-1 px-2 bg-black text-white  text-lg transition hover:text-gray-500/75"
                                       href={d.path}
                                     >
                                       {" "}
