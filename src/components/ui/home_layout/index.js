@@ -113,7 +113,7 @@ export function HomePage() {
 
             {/* Video */}
             <video
-              className="absolute opacity-70 z-100 top-[66px] left-[45px] lg:top-[100px] lg:left-[80px] w-[270px]  lg:w-[430px] lg:h-[240px] object-cover"
+              className="absolute opacity-70 z-100 top-[55px] left-[45px] lg:top-[100px] lg:left-[80px] w-[270px]  lg:w-[430px] lg:h-[240px] object-cover"
               autoPlay
               muted
               loop
